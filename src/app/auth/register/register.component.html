@@ -1,0 +1,182 @@
+
+<main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block">Garage</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <form #loginForm="ngForm"  (ngSubmit)="registerUser()" style="width:500px"; >
+
+
+                    <div class="container mt-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                   
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                            </div>
+                            <input type="text" name="prenom" required [class.is-invalid]="prenom.invalid && prenom.touched " [class.is-valid]="prenom.valid" #prenom="ngModel" [(ngModel)]="user.prenom" tabindex="1" class="form-control" placeholder="Prenom" value="">
+                            <small class="text-danger" [class.d-none]=" prenom.untouched || prenom.valid"> Veuillez saisir votre prenom </small>
+                
+                        </div>
+                    </div>
+                    
+
+                    <div class="container mt-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                   
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                            </div>
+                            <input type="nom" name="nom" id="nom" required [class.is-invalid]="nom.invalid && nom.touched " [class.is-valid]="nom.valid" #nom="ngModel" [(ngModel)]="user.nom" tabindex="2" class="form-control" placeholder="Nom">
+                            <small class="text-danger" [class.d-none]=" nom.untouched || nom.valid"> Veuillez saisir votre nom </small>
+                        </div>
+                    </div>
+
+                    <div class="container mt-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                   
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                            </div>
+                            <input type="adresse" name="adresse" id="adresse" required [class.is-invalid]="adresse.invalid && adresse.touched " [class.is-valid]="adresse.valid" #adresse="ngModel" [(ngModel)]="user.adresse" tabindex="2" class="form-control" placeholder="Adresse">
+                            <small class="text-danger" [class.d-none]="adresse.untouched || adresse.valid"> Veuillez saisir votre adresse </small>
+            
+                        </div>
+                    </div>
+                    <div class="container mt-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                   
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                            </div>
+                            <input type="telephone" name="telephone" id="telephone" required [class.is-invalid]="telephone.invalid && telephone.touched " [class.is-valid]="telephone.valid" #telephone="ngModel" [(ngModel)]="user.telephone" tabindex="2" class="form-control" placeholder="Telephone">
+                            <small class="text-danger" [class.d-none]=" telephone.untouched || telephone.valid"> Veuillez saisir votre numero de téléphone </small>
+  
+                        </div>
+                    </div>
+
+                    <div class="container mt-3">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                   
+                                    <i class="bi bi-lock-fill"></i>
+                                </span>
+                            </div>
+                            <input type="carteId" name="carteId" id="carteId" required [class.is-invalid]="carteId.invalid && carteId.touched " [class.is-valid]="carteId.valid" #telephone="ngModel" [(ngModel)]="user.carteId" tabindex="2" class="form-control" placeholder="CarteId">
+                            <small class="text-danger" [class.d-none]=" carteId.untouched || carteId.valid"> Veuillez saisir votre numero de votre carte d'identité </small>
+                
+                        </div>
+                    </div>
+
+ 
+                    <div class="container ">
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                  <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                  <i class="bi bi-person-fill"></i>
+                              </span>
+                          </div>
+                          <input type="email" name="email" id="email" (keyup)="emailVerif(email.value)" required [class.is-invalid]="emailError || (email.invalid && email.touched ) " [class.is-valid]="email.valid" #email="ngModel" [(ngModel)]="user.email" tabindex="2" class="form-control" placeholder="Email">
+                          <br>
+                          <div *ngIf="emailError || (email.touched && email.invalid)">
+                              <small class="text-danger" [class.d-none]=" email.untouched || email.valid"> Veuillez saisir votre email </small>
+                              <small class="text-danger" [class.d-none]="!emailError || email.value == ''"> Veuillez saisir l'email au bon format</small>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="container mt-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                               
+                                <i class="bi bi-lock-fill"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="password" id="password" (keyup)="passwordLengthVerif(password.value)" required [class.is-invalid]="passError || (password.invalid && password.touched )" [class.is-valid]="password.valid" #password="ngModel" [(ngModel)]="user.password" tabindex="2" class="form-control" placeholder="Password">
+                        <br>
+                    <div *ngIf="passError || (password.touched && password.invalid)">
+                    <small class="text-danger" [class.d-none]="password.untouched || password.valid"> Veuillez remplir ce champ</small>
+                    <small class="text-danger" [class.d-none]="!passError || password.value == ''"> Minimun 6 caractéres</small>
+                  </div>
+                    </div>
+                </div>
+
+                <div class="container mt-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                               
+                                <i class="bi bi-lock-fill"></i>
+                            </span>
+                        </div>
+                        <input type="password" (keyup)="passwordConfirmVerif(password.value, passwordC.value)" required [class.is-invalid]="passConfError || (passwordC.invalid && passwordC.touched )" [class.is-valid]="passwordC.valid" class="form-control" id="passwordC" #passwordC="ngModel" [(ngModel)]="passConf" placeholder="Confirmer le password" name="passwordC">
+                          <div *ngIf="passConfError || (passwordC.touched && passwordC.invalid)">
+                              <small class="text-danger" [class.d-none]=" passwordC.untouched || passwordC.valid"> Veuillez confirmer votre password </small>
+                              <small class="text-danger" [class.d-none]="!passConfError || passwordC.value == ''">les deux passwords ne sont pas identiques</small>
+                          </div>
+                  
+                    </div>
+                </div>
+            
+                  
+                    <div class="mt-3 form-group">
+            
+                          <input [disabled]="loginForm.form.invalid || emailError || passError" type="submit" tabindex="4" class="form-control btn btn-primary" value="Register">
+            
+                    </div>
+                    <br>
+                    
+            
+                    
+                  </form>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-4 col-sm-offset-1">
+                        <a [routerLink]="['/login']">J'ai dejà un compte </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+
+
+
+
+ 
