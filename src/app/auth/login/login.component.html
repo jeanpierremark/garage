@@ -24,7 +24,7 @@
                   </div>
 
 
-                  <form #loginForm="ngForm"  (ngSubmit)="loginUser()" >
+                  <form #loginForm="ngForm"  (ngSubmit)="loginUser()" style="width: 500px;">
                     <div class="container ">
                       <div class="input-group">
                           <div class="input-group-prepend">
@@ -50,11 +50,11 @@
                                 <i class="bi bi-lock-fill"></i>
                             </span>
                         </div>
-                        <input type="password" name="password" id="password" (keyup)="passwordLengthVerif(password.value)" required [class.is-invalid]="passError || (password.invalid && password.touched )" [class.is-valid]="password.valid" #password="ngModel" [(ngModel)]="user.password" tabindex="2" class="form-control" placeholder="Password">
+                        <input type="password" name="pass" id="pass" (keyup)="passwordLengthVerif(pass.value)" required [class.is-invalid]="passError || (pass.invalid && pass.touched )" [class.is-valid]="pass.valid" #pass="ngModel" [(ngModel)]="user.pass" tabindex="2" class="form-control" placeholder="Password">
                         <br>
-                    <div *ngIf="passError || (password.touched && password.invalid)">
-                    <small class="text-danger" [class.d-none]="password.untouched || password.valid"> Veuillez remplir ce champ</small>
-                    <small class="text-danger" [class.d-none]="!passError || password.value == ''"> Minimun 6 caractéres</small>
+                    <div *ngIf="passError || (pass.touched && pass.invalid)">
+                    <small class="text-danger" [class.d-none]="pass.untouched || pass.valid"> Veuillez remplir ce champ</small>
+                    <small class="text-danger" [class.d-none]="!passError || pass.value == ''"> Minimun 6 caractéres</small>
                   </div>
                     </div>
                 </div>
@@ -69,6 +69,7 @@
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a [routerLink]="['/register']">Create an account</a></p>
                     </div>
+                    
             
                     
                   </form>

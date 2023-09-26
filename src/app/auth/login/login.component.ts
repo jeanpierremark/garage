@@ -1,9 +1,8 @@
+import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
-
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 import Swal from 'sweetalert2';
-
 
 @Component({
   selector: 'app-login',
@@ -11,12 +10,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   user: any = []
 
   passError = false;
   emailError = false;
-
+ 
+  static admin: any;
+  static passager: any;
   constructor(private login_service:LoginService,private router:Router) { }
 
  
@@ -55,28 +55,33 @@ export class LoginComponent {
 
   loginUser(){
     
-    this.login_service.connexion(this.user.email,this.user.password)
-    .subscribe({
-      next:(data) => {
-        if(data.body['message'] == "successfully"){
+    this.login_service.connexion(this.user.email,this.user.pass)
+          .subscribe({
+            next:(response:any)=>{  
 
-          localStorage.setItem('token','logged')
-          this.router.navigate(["/home/index"])
-
-      }
-      else{
-
-        this.showAlertMessage("Error","Login et/ou mot de passe incorrect","error")
-      }
-
-      },
-      error:(err) => {
-        console.log(err);
-        this.showAlertMessage("Error","Erreur au niveau du serveur","warning")
-
-      }
-    })
-  }
+            if(response.body.message =="connected"){
+            
+              console.log(response.body);
+              if(response.body.user.role == "admin"){
+                LoginComponent.admin = localStorage.getItem('prenom')+ " " +localStorage.getItem('nom');
+                this.router.navigate(["/home/accueil"])
+              }
+              else if(response.body.user.role == "passager"){
+                LoginComponent.passager = response.body.user.prenom+ " " +response.body.user.nom;
+                this.router.navigate([""])
+              } 
+              else{
+                this.router.navigate([""])
+              }
+            }
+            else{
+              //console.log(response.error);
+              this.showAlertMessage("Error",response.error.message,"error")
+            }
+            }
+  })
+  
+}
 
 
 
@@ -96,9 +101,7 @@ showAlertMessage( title:string, message:string, icon:any ,showCancelButton = tru
   }).then((result)=>{
       if(result.isConfirmed){
 
-      }
-  })
+  }
+})
 }
-
-
 }

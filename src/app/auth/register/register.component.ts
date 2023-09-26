@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { UserService } from 'src/app/service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +12,7 @@ export class RegisterComponent {
 
   user: any = []
   passConf!:string
+  
   
   passError = false;
   passConfError = false;
@@ -68,7 +69,6 @@ export class RegisterComponent {
     }
 
   }
- 
 
 
   registerUser(){
@@ -78,49 +78,21 @@ export class RegisterComponent {
       this.user.nom,
       this.user.adresse,
       this.user.telephone,
-      this.user.carteId,
       this.user.email,
-      this.user.pass)
+      this.user.password,
+      this.user.carteId
+      )
 
     .subscribe({
       next:(data) => {
-        if(data.body['message'] == "already"){
-
-          this.showAlertMessage('Erreur','Un compte avec '+this.user.email+' exite déjà','warning')
-
-      }
-      else if(data.body['message'] == "successfully"){
-
-
-        this.user.prenom = ""
-        this.user.nom = ""
-        this.user.adresse = ""
-        this.user.telephone = ""
-        this.user.email = ""
-        this.user.carteId =""
-        this.user.password = ""
-        this.passConf = ""
-
-         const Toast = Swal.mixin({
-
-         toast: true,
-         position: "top-end",
-         showConfirmButton: false,
-         timer: 3000,
-         timerProgressBar: true,
-         didOpen: (toast) => {
-           toast.addEventListener('mouseenter', Swal.stopTimer)
-           toast.addEventListener('mouseleave', Swal.resumeTimer)
-         }
-       })
-
-       Toast.fire({
-         icon: "success",
-         title: "Inscription réussie"
-       })
+         if(data.body.message == "Success"){
          this.router.navigate(["/login"])
-         console.log('Inscription reussi')
-}
+        
+        }
+        else{
+          console.log(data.body.message)
+          this.showAlertMessage("Error","Error when saving information ","warning")
+        }
 
       },
       error:(err) => {
@@ -132,7 +104,6 @@ export class RegisterComponent {
   }
 
 
-  
 
 
   showAlertMessage( title:string, message:string, icon:any ,showCancelButton = true){

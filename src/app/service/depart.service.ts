@@ -15,7 +15,7 @@ export class DepartService {
     return this.http.post<any>('http://localhost:3000/api/depart/create', formData);
   }
   getAllDepart(){
-    return this.http.get<any>('http://localhost:3000/api/depart/all');
+    return this.http.get<any>('http://localhost:3000/api/depart/all',{observe : "response"});
   }
   getAllDepartVoiture(id : number){
     return this.http.get<any>('http://localhost:3000/api/depart/allDepartVoiture/'+id);

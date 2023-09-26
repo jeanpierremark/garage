@@ -1,0 +1,59 @@
+
+<body>
+    <main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-people-fill">&nbsp;</span>Passager <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+          <li class="breadcrumb-item active">Passager</li>
+        </ol>
+      </nav>
+    
+                <div class="card">
+                    <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
+                        <h3>Liste des Passager</h3>
+                    </div>
+                        <div class="card-body">
+                       
+                        <table id="example" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
+                            <thead>
+                              <tr>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Adresse</th>
+                                <th scope="col">Téléphone</th>
+                                <th scope="col">Carte ID</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                        
+                                    <tr *ngFor="let passager of passagers">
+                                        <td>{{passager.prenom}}</td>
+                                        <td>{{passager.nom}}</td>
+                                        <td>{{passager.adresse}}</td>
+                                        <td>{{passager.telephone}} </td>
+                                        <td>{{passager.carteId}} </td>
+                                        
+                                        <td>
+                                           
+                                            <a href="" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
+                                            <a href="" class="btn btn-warning"><span class="bi bi-bag-plus-fill"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
+                                            <a href=""  class="btn btn-danger " ><span class="bi bi-trash-fill"></span></a>
+                                            
+                                           
+                                        </td>
+                                    </tr>
+                               
+                               
+                            </tbody>
+                          </table>
+                        
+                </div>
+            </div>
+      
+    
+    
+    <main>
+       
+    

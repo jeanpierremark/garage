@@ -1,0 +1,64 @@
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link"  [routerLink]="['/home/accueil']">
+          <i class="ri-home-3-fill"></i>
+          <span>Accueil</span>
+        </a>
+      </li><!-- End Accueil Nav -->
+
+<hr>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed"  data-bs-toggle="collapse" [routerLink]="['/home/passager']">
+          <i class="bi bi-people-fill"></i><span>Passagers</span>
+        </a>
+    </li><!-- End Passagers Nav -->
+<hr>
+      
+    <li class="nav-item">
+      <a class="nav-link collapsed"  data-bs-toggle="collapse" [routerLink]="['/home/chauffeur']">
+        <i class="bi bi-person-standing"></i><span>Chauffeurs</span>
+      </a>
+  </li><!-- End Chauffeur Nav -->
+
+<hr>
+  
+        <li class="nav-item">
+          <a class="nav-link collapsed"  data-bs-toggle="collapse" [routerLink]="['/home/voiture']">
+            <i class="ri-car-washing-line"></i><span>Voitures</span>
+          </a>
+      </li><!-- End Voitures Nav -->
+      
+<hr>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-alarm-fill"></i><span>Départs</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a  [routerLink]="['/home/depart']">
+              <i class="bi bi-circle"></i><span>Liste</span>
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Calendrier</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Departs Nav -->
+      <hr>
+        <li class="nav-item">
+          <a class="nav-link collapsed"  data-bs-toggle="collapse" href="#">
+            <i class="bx bx-line-chart"></i><span>Statistiques</span>
+          </a>
+      </li><!-- End Statistiques Nav -->
+     
+    </ul>
+
+  </aside><!-- End Sidebar-->

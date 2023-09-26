@@ -10,7 +10,7 @@ export class PassagerService {
 
 
     getAllPassager(){
-      return this.http.get<any>('http://localhost:3000/api/passager/all');
+      return this.http.get<any>('http://localhost:3000/api/passager/all',{observe :"response"});
     }
     addBagage(id:number,libelle:string,typeBagage:string,quantite :string) {
       var formData: any = new FormData();

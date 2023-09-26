@@ -1,0 +1,60 @@
+
+<body>
+    <main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-person-standing">&nbsp;</span>Chauffeur <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+          <li class="breadcrumb-item active">Chauffeur</li>
+        </ol>
+      </nav>
+    
+                <div class="card">
+                    <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
+                        <h3>Liste des Chauffeurs</h3>
+                    </div>
+                        <div class="card-body">
+                       
+                        <table id="example" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
+                            <thead>
+                              <tr>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Adresse</th>
+                                <th scope="col">Téléphone</th>
+                                <th scope="col">Permis</th>
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                        
+                                    <tr *ngFor="let chauffeur of chauffeurs">
+                                        <td>{{chauffeur.prenom}}</td>
+                                        <td>{{chauffeur.nom}}</td>
+                                        <td>{{chauffeur.adresse}}</td>
+                                        <td>{{chauffeur.telephone}} </td>
+                                        <td>{{chauffeur.carteId}} </td>
+                                        
+                                        <td>
+                                           
+                                            <a href="" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
+                                            <a href="" class="btn btn-warning"><span class="ri-car-washing-line"></span></a>&nbsp;&nbsp;
+                                            <a href="" class="btn btn-success"><span class="ri-car-washing-line"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
+                                            <a href=""  class="btn btn-danger " ><span class="bi bi-trash-fill"></span></a>
+                                            
+                                           
+                                        </td>
+                                    </tr>
+                               
+                               
+                            </tbody>
+                          </table>
+                        
+                </div>
+            </div>
+      
+    
+    
+    <main>
+       
+    

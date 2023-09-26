@@ -9,7 +9,7 @@ export class ChauffeurService {
   constructor(private http : HttpClient) { }
 
     getAllChauffeur(){
-      return this.http.get<any>('http://localhost:3000/api/chauffeur/all');
+      return this.http.get<any>('http://localhost:3000/api/chauffeur/all',{observe : "response"});
     }
 
     deleteChauffeur(id:any){
