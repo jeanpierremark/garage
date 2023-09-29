@@ -16,6 +16,17 @@ import { HomeComponent } from './main/home/home.component';
 import { HeaderComponent } from './static/header/header.component';
 import { SidebarComponent } from './static/sidebar/sidebar.component';
 import { FooterComponent } from './static/footer/footer.component';
+import { AddChauffeurComponent } from './main/add-chauffeur/add-chauffeur.component';
+import { AddBagageComponent } from './main/add-bagage/add-bagage.component';
+import { AddDepartComponent } from './main/add-depart/add-depart.component';
+import { AddVoitureComponent } from './main/add-voiture/add-voiture.component';
+import { EditVoitureComponent } from './main/edit-voiture/edit-voiture.component';
+import { EditPassagerComponent } from './main/edit-passager/edit-passager.component';
+import { EditChauffeurComponent } from './main/edit-chauffeur/edit-chauffeur.component';
+import { EditBagageComponent } from './main/edit-bagage/edit-bagage.component';
+import { EditDepartComponent } from './main/edit-depart/edit-depart.component';
+import { VoitureChauffeurComponent } from './main/voiture-chauffeur/voiture-chauffeur.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +41,18 @@ import { FooterComponent } from './static/footer/footer.component';
     HomeComponent,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    AddChauffeurComponent,
+    AddBagageComponent,
+    AddDepartComponent,
+    AddVoitureComponent,
+    EditVoitureComponent,
+    EditPassagerComponent,
+    EditChauffeurComponent,
+    EditBagageComponent,
+    EditDepartComponent,
+    VoitureChauffeurComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -10,22 +10,20 @@ export class VoitureService {
 
 
     addVoiture(id:number,type:string,matricule:string){
-      var formData = new FormData();
-      formData.append('type',type);
-      formData.append('matricule',matricule);
-      return this.http.post<any>('http://localhost:3000/api/voiture/create/'+id ,formData);
+      return this.http.post<any>('http://localhost:3000/api/voiture/create/'+id ,{id,type,matricule},{observe:"response"});
     }
     getAllVoiture(){
       return this.http.get<any>('http://localhost:3000/api/voiture/all',{observe : 'response'});
     }
+    getVoitureById(id :number){
+      return this.http.get<any>('http://localhost:3000/api/voiture/getOne/'+id,{observe : 'response'});
+    }
     deleteVoiture(id : number){
-      return this.http.delete<any>('http://localhost:3000/api/voiture/delete/'+id);
+      return this.http.delete<any>('http://localhost:3000/api/voiture/delete/'+id,{observe:"response"});
     }
     updateVoiture(id:number,type:string,matricule:string){
-      var formData = new FormData();
-      formData.append('type',type);
-      formData.append('matricule',matricule);
-      return this.http.put<any>('http://localhost:3000/api/voiture/update/'+id ,formData);
+      
+      return this.http.put<any>('http://localhost:3000/api/voiture/update/'+id ,{matricule,type},{observe:"response"});
     }
     getPassagers(){
       return this.http.get<any>('http://localhost:3000/api/voiture/passagers');

@@ -11,7 +11,12 @@
     
                 <div class="card">
                     <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
-                        <h3>Liste des Chauffeurs</h3>
+                        <h3>Liste des Chauffeurs <span style="padding-right: 10px;"><a href="/home/newChauffeur" class="btn btn-success btn-icon-split">
+                          <span class="icon text-gray-600">
+                              <i class="bi bi-person-plus-fill"></i>
+                          </span>
+                          <span class="text">&nbsp; <strong>Ajouter un Chauffeur</strong> </span>
+                      </a></span></h3>
                     </div>
                         <div class="card-body">
                        
@@ -33,14 +38,14 @@
                                         <td>{{chauffeur.nom}}</td>
                                         <td>{{chauffeur.adresse}}</td>
                                         <td>{{chauffeur.telephone}} </td>
-                                        <td>{{chauffeur.carteId}} </td>
+                                        <td>{{chauffeur.numPermis}} </td>
                                         
                                         <td>
                                            
-                                            <a href="" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
-                                            <a href="" class="btn btn-warning"><span class="ri-car-washing-line"></span></a>&nbsp;&nbsp;
-                                            <a href="" class="btn btn-success"><span class="ri-car-washing-line"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
-                                            <a href=""  class="btn btn-danger " ><span class="bi bi-trash-fill"></span></a>
+                                            <a href="/home/editChauffeur?id={{chauffeur.id}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
+                                            <a href="/home/chauffeur/allVoitures?id={{chauffeur.id}}" class="btn btn-warning"><span class="ri-car-washing-line"></span></a>&nbsp;&nbsp;
+                                            <a href="/home/chauffeur/newVoiture?id={{chauffeur.id}}" class="btn btn-success"><span class="ri-car-washing-line"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
+                                            <button  class="btn btn-danger " (click)="deleteChauffeur(chauffeur.id)" ><span class="bi bi-trash-fill"></span></button>
                                             
                                            
                                         </td>

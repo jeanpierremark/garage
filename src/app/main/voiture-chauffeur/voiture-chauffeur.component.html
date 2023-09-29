@@ -1,0 +1,55 @@
+
+<body>
+    <main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-person-standing">&nbsp;</span>Chauffeur <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Voitures</span></h1>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+          <li class="breadcrumb-item active">Chauffeur</li>
+        </ol>
+      </nav>
+    
+                <div class="card">
+                    <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
+                        <h3>Liste des Voitures de  <span class="text-primary"> <strong>{{chauffeur.prenom}} {{chauffeur.nom}}</strong></span></h3>
+                    </div>
+                        <div class="card-body">
+                       
+                        <table id="example" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
+                            <thead>
+                              <tr>
+                                <th scope="col">Type de Voiture</th>
+                                <th scope="col">Matricule</th>
+
+                                <th scope="col">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                        
+                                    <tr *ngFor="let voiture of voitures">
+                                        <td>{{voiture.type}}</td>
+                                        <td>{{voiture.matricule}}</td>
+                                       
+                                        
+                                        <td>
+                                           
+                                            <a href="/home/editVoiture?id={{voiture.id}}" class="btn btn-warning"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
+                                    
+                                            <button  class="btn btn-danger " (click)="deleteVoiture(voiture.id)" ><span class="bi bi-trash-fill"></span></button>
+                                            
+                                           
+                                        </td>
+                                    </tr>
+                               
+                               
+                            </tbody>
+                          </table>
+                        
+                </div>
+            </div>
+      
+    
+    
+    <main>
+       
+    
