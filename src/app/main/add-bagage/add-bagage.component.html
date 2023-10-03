@@ -1,1 +1,137 @@
-<p>add-bagage works!</p>
+
+<main>
+    <main id="main" class="main">
+        <h1 style="color:darkblue" class="text-primary"><span class="bi bi-person-standing">&nbsp;</span>Chauffeur <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Ajouté des bagages à <span class="text-warning">{{passager.prenom}} {{passager.nom}}</span></span></h1>
+        <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+              <li class="breadcrumb-item "><a href="/home/passager"> passager</a></li>
+              <li class="breadcrumb-item active text-success">{{passager.prenom}} {{passager.nom}}</li>
+            </ol>
+          </nav>
+
+
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+             
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h1 class="card-title text-center pb-0 fs-4 bi bi-bag-plus-fill text-primary" > New Bagage</h1>
+                    
+                  </div>
+
+
+                  <form #voitureForm="ngForm"  (ngSubmit)="addBagage()" style="width: 500px;">
+                
+                    <div class="container mt-3 form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                    <i class="bi bi-bag-plus-fill"></i>
+                                </span>
+                                </div>
+                                <input type="text" name="libelle" required [class.is-invalid]="libelle.invalid && libelle.touched " [class.is-valid]="libelle.valid" #libelle="ngModel" [(ngModel)]="bagage.libelle" tabindex="1" class="form-control" placeholder="Libelle" value="">
+                                <small class="text-danger" [class.d-none]=" libelle.untouched || libelle.valid"> Veuillez saisir Le libelle </small>
+    
+                            </div>
+                      </div>
+                      <div class="container mt-3 form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                    <i class="bi bi-bag-plus-fill"></i>
+                                </span>
+                                </div>
+                                <input type="text" name="quantite" required [class.is-invalid]="quantite.invalid && quantite.touched " [class.is-valid]="quantite.valid" #quantite="ngModel" [(ngModel)]="bagage.quantite" tabindex="1" class="form-control" placeholder="Quantité" value="">
+                                <small class="text-danger" [class.d-none]=" quantite.untouched || quantite.valid"> Veuillez saisir La quantité de bagages </small>
+    
+                            </div>
+                      </div>
+
+                      <div class="container mt-3 form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                    <i class="bi bi-bag-plus-fill"></i>
+                                </span>
+                                </div>
+                                <input type="text" name="date" required [class.is-invalid]="date.invalid && date.touched " [class.is-valid]="libelle.valid" #date="ngModel" [(ngModel)]="bagage.date" tabindex="1" class="form-control" placeholder="aaaa-mm-jj hh:mm" value="">
+                                <small class="text-danger" [class.d-none]=" date.untouched || date.valid"> Veuillez saisir la date d'enregistrement </small>
+    
+                            </div>
+                      </div>
+            
+                  
+                    <div class="mt-3 form-group">
+            
+                        <input [disabled]="voitureForm.form.invalid " type="submit"  tabindex="4" class="form-control btn btn-primary"  value="Valider"/>
+            
+                    </div>
+                  
+                    
+                  </form>
+                  
+                  
+                  </div>
+               
+              </div>
+
+              
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

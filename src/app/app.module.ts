@@ -26,6 +26,9 @@ import { EditChauffeurComponent } from './main/edit-chauffeur/edit-chauffeur.com
 import { EditBagageComponent } from './main/edit-bagage/edit-bagage.component';
 import { EditDepartComponent } from './main/edit-depart/edit-depart.component';
 import { VoitureChauffeurComponent } from './main/voiture-chauffeur/voiture-chauffeur.component';
+import { BagageComponent } from './main/bagage/bagage.component';
+import { AddPassagerDepartComponent } from './main/add-passager-depart/add-passager-depart.component';
+import { PassagerDepartComponent } from './main/passager-depart/passager-depart.component';
 
 
 @NgModule({
@@ -52,6 +55,9 @@ import { VoitureChauffeurComponent } from './main/voiture-chauffeur/voiture-chau
     EditBagageComponent,
     EditDepartComponent,
     VoitureChauffeurComponent,
+    BagageComponent,
+    AddPassagerDepartComponent,
+    PassagerDepartComponent,
     
   ],
   imports: [

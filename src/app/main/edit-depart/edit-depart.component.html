@@ -1,1 +1,134 @@
-<p>edit-depart works!</p>
+
+
+<body>
+    <main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-alarm-fill">&nbsp;</span> Depart <span class="breadcrumb-item text-secondary small text-warning " style="font-size: 19px;">Editing <span class="text-warning">{{d}} {{dateH}} </span> </span></h1>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="home/accueil">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="home/depart">Depart</a></li>
+          <li class="breadcrumb-item"> <span class="text-warning">{{d}} {{dateH}}</span> </li>
+        </ol>
+       
+      </nav>
+    
+
+      
+
+  <div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+
+            <div class="card mb-3">
+
+              <div class="card-body">
+
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4"><div style="text-align: center;" class="text-primary ">Editing Depart</div></h5>
+                  
+                </div>
+
+
+                <form #departForm="ngForm"  (ngSubmit)="updateDepart()" style="width: 500px;">
+                  
+                    <div class="container mt-3 form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                    <i class="bi bi-alarm-fill"></i>
+                                </span>
+                                </div>
+                                <input type="text" name="destination" required [class.is-invalid]="destination.invalid && destination.touched " [class.is-valid]="destination.valid" #destination="ngModel" [(ngModel)]="depart.destination" tabindex="1" class="form-control" placeholder="Destination" value="">
+                                <small class="text-danger" [class.d-none]=" destination.untouched || destination.valid"> Veuillez saisir La destination </small>
+    
+                            </div>
+                      </div>
+                      <div class="container mt-3 form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
+                                    <i class="bi bi-alarm-fill"></i>
+                                </span>
+                                </div>
+                                <input type="text" name="dateHeure" required [class.is-invalid]="dateHeure.invalid && dateHeure.touched " [class.is-valid]="dateHeure.valid" #dateHeure="ngModel" [(ngModel)]="depart.dateHeure" tabindex="1" class="form-control" placeholder="aaaa-mm-jj hh:mm" value="">
+                                <small class="text-danger" [class.d-none]=" dateHeure.untouched || dateHeure.valid"> Veuillez saisir La date et l'heure </small>
+    
+                            </div>
+                      </div>
+
+                      
+            
+                  
+                    <div class="mt-3 form-group">
+            
+                        <input [disabled]="departForm.form.invalid " type="submit"  tabindex="4" class="form-control btn btn-primary"  value="Valider"/>
+            
+                    </div>
+                  
+                    
+                  </form>
+                  
+                
+                
+                </div>
+             
+            </div>
+
+            
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</main><!-- End #main -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    
+    
+

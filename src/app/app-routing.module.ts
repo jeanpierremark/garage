@@ -14,6 +14,13 @@ import { EditVoitureComponent } from './main/edit-voiture/edit-voiture.component
 import { AddChauffeurComponent } from './main/add-chauffeur/add-chauffeur.component';
 import { AddVoitureComponent } from './main/add-voiture/add-voiture.component';
 import { VoitureChauffeurComponent } from './main/voiture-chauffeur/voiture-chauffeur.component';
+import { AddBagageComponent } from './main/add-bagage/add-bagage.component';
+import { BagageComponent } from './main/bagage/bagage.component';
+import { EditBagageComponent } from './main/edit-bagage/edit-bagage.component';
+import { AddDepartComponent } from './main/add-depart/add-depart.component';
+import { EditDepartComponent } from './main/edit-depart/edit-depart.component';
+import { AddPassagerDepartComponent } from './main/add-passager-depart/add-passager-depart.component';
+import { PassagerDepartComponent } from './main/passager-depart/passager-depart.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:'full'},
@@ -30,9 +37,17 @@ const routes: Routes = [
   {path:'editChauffeur', component:EditChauffeurComponent},
   {path:'editPassager', component:EditPassagerComponent},
   {path:'editVoiture', component:EditVoitureComponent},
+  {path:'editDepart', component:EditDepartComponent},
   {path:'newChauffeur', component:AddChauffeurComponent},
   {path:'chauffeur/newVoiture', component:AddVoitureComponent},
   {path:'chauffeur/allVoitures', component:VoitureChauffeurComponent},
+  {path:'passager/addBagage', component:AddBagageComponent},
+  {path:'passager/bagage', component:BagageComponent},
+  {path:'passager/editBagage', component:EditBagageComponent},
+  {path:'depart/addPassager', component:AddPassagerDepartComponent},
+  {path:'depart/passager', component:PassagerDepartComponent},
+  {path:'addDepart', component:AddDepartComponent},
+  {path:'depart/deletePassager', component:PassagerDepartComponent},
   ]},
 
 

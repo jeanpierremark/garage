@@ -63,7 +63,7 @@ export class VoitureComponent {
       text: message,
       icon: icon,
       showCloseButton: true,
-      showCancelButton: true,
+      //showCancelButton: true,
      // confirmButtonColor: '#3085d6',
       //cancelButtonColor: '#d33',
       //cancelButtonText: 'Retour',
@@ -76,7 +76,7 @@ export class VoitureComponent {
     }).then((result)=>{
         if(result.isConfirmed){
           if(icon == "success"){
-  
+            window.location.reload();
             this.router.navigate(["/home/chauffeur/allVoiture"])
           }
   

@@ -13,12 +13,6 @@ id : any ;
 voiture : any = []
 
 
-
-
-
-
-
-
 constructor(private router :Router, private route  : ActivatedRoute,private voitureService :VoitureService){}
 
 ngOnInit() : any {
@@ -47,8 +41,8 @@ ngOnInit() : any {
 updateVoiture(){
   this.voitureService.updateVoiture(
     this.id,
-    this.voiture.matricule,
     this.voiture.type,
+    this.voiture.matricule,
    )
     .subscribe({
       next:(data) => {

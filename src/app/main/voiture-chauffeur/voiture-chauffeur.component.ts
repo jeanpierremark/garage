@@ -50,7 +50,7 @@ getVoitures(){
       }
     }, error:(err) => {
       console.log(err);
-      this.showAlertMessage("Error","Internal Server Error","danger")
+      this.showAlertMessage("Error","Internal Server Error","error")
 
     }
   })
@@ -66,13 +66,13 @@ deleteVoiture(id :any){
       }
       else{
         console.log(data.body.message)
-        this.showAlertMessage("Error","Error when deleting Voiture","error")
+        this.showAlertMessage("Error","Error when deleting Voiture","warning")
       }
 
     },
     error:(err) => {
       console.log(err);
-      this.showAlertMessage("Error","Internal Server Error","danger")
+      this.showAlertMessage("Error","Internal Server Error","error")
 
     }
   })
@@ -85,7 +85,7 @@ showAlertMessage( title:string, message:string, icon:any ){
     text: message,
     icon: icon,
     showCloseButton: true,
-    showCancelButton: true,
+    //showCancelButton: true,
    // confirmButtonColor: '#3085d6',
     //cancelButtonColor: '#d33',
     //cancelButtonText: 'Retour',
@@ -98,7 +98,7 @@ showAlertMessage( title:string, message:string, icon:any ){
   }).then((result)=>{
       if(result.isConfirmed){
         if(icon == "success"){
-
+          window.location.reload()
           this.router.navigate(["/home/chauffeur/allVoitures?id="+this.id])
         }
 

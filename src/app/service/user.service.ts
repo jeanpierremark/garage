@@ -14,8 +14,8 @@ export class UserService {
     return this.http.post<any>('http://localhost:3000/api/user/createPassager',{prenom,nom,adresse,telephone,email,pass,carteId},{ observe: 'response' });
   }
 
-  creerUserChauffeur(prenom: string,nom: string,adresse:string,telephone: string,login:string,pass:string,numPermis:number) {
-    return this.http.post<any>('http://localhost:3000/api/user/createChauffeur',{prenom,nom,adresse,telephone,login,pass,numPermis},{ observe:'response' });
+  creerUserChauffeur(prenom: string,nom: string,adresse:string,telephone: string,email:string,pass:string,numPermis:number) {
+    return this.http.post<any>('http://localhost:3000/api/user/createChauffeur',{prenom,nom,adresse,telephone,email,pass,numPermis},{ observe:'response' });
   }
   getAllUsers(){
     return this.http.get<any>('http://localhost:3000/api/user/all');
