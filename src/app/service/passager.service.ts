@@ -16,14 +16,24 @@ export class PassagerService {
     getPassagerById(id:number){
       return this.http.get<any>('http://localhost:3000/api/passager/getOne/'+id,{observe :"response"});
     }
+    getPassagerByUser(id:number){
+      return this.http.get<any>('http://localhost:3000/api/passager/getPass/'+id,{observe :"response"});
+    }
+    getMesDeparts(id:number){
+      return this.http.get<any>('http://localhost:3000/api/passager/mesDeparts/'+id,{observe :"response"});
+    }
     getBagageById(id:number){
       return this.http.get<any>('http://localhost:3000/api/passager/getOneBagage/'+id,{observe :"response"});
     }
 
     addBagage(id:number,libelle:string,quantite :string,date:string) {
-     
       return this.http.post<any>('http://localhost:3000/api/passager/createBagage/'+id ,{id,libelle,quantite,date},{observe:"response"});
     }
+
+    addPerte(passager:number,bagage :number) {
+      return this.http.post<any>('http://localhost:3000/api/passager/createPerte/'+passager+'/'+bagage ,{observe:"response"});
+    }
+    
     getBagPassager(id:number){
       return this.http.get<any>('http://localhost:3000/api/passager/passagerBagage/'+id,{observe:"response"});
     }

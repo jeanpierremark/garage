@@ -39,7 +39,15 @@
                                   <i class="bi bi-person-fill"></i>
                               </span>
                               </div>
-                              <input type="text" name="type" required [class.is-invalid]="type.invalid && type.touched " [class.is-valid]="type.valid" #type="ngModel" [(ngModel)]="voiture.type" tabindex="1" class="form-control" placeholder="Type" value="">
+                             
+                              <select  name="type" required [class.is-invalid]="type.invalid && type.touched " [class.is-valid]="type.valid" #type="ngModel" [(ngModel)]="voiture.type" tabindex="1" class="form-control" placeholder="Type" value="Bus">
+                                <option value="Bus">Bus</option>
+                                <option value="Car">Car</option>
+                                <option value="MiniBus">Mini Bus</option>
+                                <option value="MiniCar">Mini car</option>
+                                <option value="4 places">4 places</option>
+                                <option value="7 places">7 places</option>
+                              </select>
                               <small class="text-danger" [class.d-none]=" type.untouched || type.valid"> Veuillez saisir le type de voiture </small>
   
                           </div>

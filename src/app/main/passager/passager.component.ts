@@ -25,6 +25,7 @@ export class PassagerComponent {
         console.log(response.body.message);
           if(response.body.message == "success"){
             this.passagers = response.body.passagers
+           
           }
           console.log(this.passagers);
           //this.router.navigate(["voiture"]);

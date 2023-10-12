@@ -1,7 +1,7 @@
 
 <main>
     <main id="main" class="main">
-        <h1 style="color:darkblue" class="text-primary"><span class="bi bi-person-standing">&nbsp;</span>Chauffeur <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Ajouté des bagages à <span class="text-warning">{{passager.prenom}} {{passager.nom}}</span></span></h1>
+        <h1 style="color:darkblue" class="text-primary"><span class="bi bi-people-fill">&nbsp;</span>Passager <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Ajouté des bagages à <span class="text-warning">{{passager.prenom}} {{passager.nom}}</span></span></h1>
         <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
@@ -67,7 +67,7 @@
                                     <i class="bi bi-bag-plus-fill"></i>
                                 </span>
                                 </div>
-                                <input type="text" name="date" required [class.is-invalid]="date.invalid && date.touched " [class.is-valid]="libelle.valid" #date="ngModel" [(ngModel)]="bagage.date" tabindex="1" class="form-control" placeholder="aaaa-mm-jj hh:mm" value="">
+                                <input type="text" name="date" required [class.is-invalid]="date.invalid && date.touched " [class.is-valid]="libelle.valid" #date="ngModel" [(ngModel)]="bagage.date" tabindex="1" class="form-control" placeholder="aaaa-mm-jj " value="{{dateT}}" [contentEditable]="false">
                                 <small class="text-danger" [class.d-none]=" date.untouched || date.valid"> Veuillez saisir la date d'enregistrement </small>
     
                             </div>

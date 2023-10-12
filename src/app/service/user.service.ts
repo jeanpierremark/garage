@@ -34,5 +34,12 @@ export class UserService {
   deleteUser(id :number){
     return this.http.delete<any>('http://localhost:3000/api/user/delete/'+id,{ observe: 'response' });
   }
+
+  getPerte(){
+    return this.http.get<any>('http://localhost:3000/api/user/allPerte',{ observe: 'response' });
+  }
    
+  getVoitureType(){
+    return this.http.get<any>('http://localhost:3000/api/user/voitureType',{ observe: 'response' });
+  }
 }

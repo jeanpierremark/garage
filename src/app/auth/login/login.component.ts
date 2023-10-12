@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -17,6 +18,7 @@ export class LoginComponent {
  
   static admin: any;
   static passager: any;
+  static islogin: any
   constructor(private login_service:LoginService,private router:Router) { }
 
  
@@ -57,46 +59,55 @@ export class LoginComponent {
     
     this.login_service.connexion(this.user.email,this.user.pass)
           .subscribe({
-            next:(response:any)=>{  
+            next:(response)=>{  
 
             if(response.body.message =="connected"){
-            
-              console.log(response.body);
               if(response.body.user.role == "admin"){
                 LoginComponent.admin = localStorage.getItem('prenom')+ " " +localStorage.getItem('nom');
+                LoginComponent.islogin = response.body.islogin;
+                console.log(LoginComponent.islogin)
                 this.router.navigate(["/home/accueil"])
               }
               else if(response.body.user.role == "passager"){
-                LoginComponent.passager = response.body.user.prenom+ " " +response.body.user.nom;
-                this.router.navigate([""])
+                this.router.navigate(["/home/accueil"])
+               
               } 
               else{
                 this.router.navigate([""])
               }
+            }           
+        },error : (error: HttpErrorResponse) => {
+          if(error.error.message == "not found"){
+          this.showAlertMessage("Error","Wrong Email ","error")
+          console.log(error.error.message)
+          }
+          else if(error.error.message == "incorrect"){
+            this.showAlertMessage("Error","Your password is incorrect ","error")
+            console.log(error.error.message)
             }
             else{
-              //console.log(response.error);
-              this.showAlertMessage("Error",response.error.message,"error")
+              this.showAlertMessage("Error","Internal Server Error ","error")
             }
-            }
-  })
+        }
+    })
   
+
 }
 
 
 
 
-showAlertMessage( title:string, message:string, icon:any ,showCancelButton = true){
+showAlertMessage( title:string, message:string, icon:any ){
   return Swal.fire({
 
     title: title,
     text: message,
     icon: icon,
     showCloseButton: true,
-    showCancelButton: false,
+    //showCancelButton: false,
     confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Réessayer',
+ 
+    //confirmButtonText: '',
 
   }).then((result)=>{
       if(result.isConfirmed){

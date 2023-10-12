@@ -89,6 +89,10 @@ export class RegisterComponent {
          this.router.navigate(["/login"])
         
         }
+        else if(data.body.message == "exist"){
+          this.router.navigate(["/register"])
+          this.showAlertMessage("Error","Error email or carte Id already exist ","warning")
+        }
         else{
           console.log(data.body.message)
           this.showAlertMessage("Error","Error when saving information ","warning")
@@ -106,17 +110,17 @@ export class RegisterComponent {
 
 
 
-  showAlertMessage( title:string, message:string, icon:any ,showCancelButton = true){
+  showAlertMessage( title:string, message:string, icon:any ){
     return Swal.fire({
 
       title: title,
       text: message,
       icon: icon,
       showCloseButton: true,
-      showCancelButton: false,
+      //showCancelButton: false,
       confirmButtonColor: '#3085d6',
       // cancelButtonColor: '#d33',
-      confirmButtonText: 'Se connecter',
+      //confirmButtonText: 'Se connecter',
 
       // position: 'top-end',
       // timer: 3000

@@ -1,0 +1,46 @@
+<main id="main" class="main">
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-alarm-fill">&nbsp;</span>Mes Départs <span class="breadcrumb-item text-secondary small" style="font-size: 15px; ">Liste</span></h1>
+    &nbsp;<nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+          <li class="breadcrumb-item active">Mes Départs</li>
+        </ol>
+      </nav>
+    
+                <div class="card">
+                    <div class="card-header justify-content-between" style="border-top:4px solid #a20808">
+                        <h3>Liste de mes Départs</h3>
+                    </div>
+                        <div class="card-body">
+                       
+                        <table id="example" class=" table  table-striped col-lg-16  " style=" background: white; border: 0px; width:100%"> 
+                            <thead>
+                              <tr>
+                                <th scope="col">Date Départ</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">Type de voiture</th>
+                                <th scope="col">Matricule</th>
+                             
+                              </tr>
+                            </thead>
+                            <tbody>
+                        
+                                    <tr *ngFor="let depart of departs">
+                                        <td>{{depart.dateHeure}} </td>
+                                        <td>{{depart.destination}}</td>
+                                        <td>{{depart.type}} </td>
+                                        <td>{{depart.matricule}}</td>
+                                       
+                                      
+                                      
+                                    </tr>
+                               
+                               
+                            </tbody>
+                          </table>
+                        
+                </div>
+            </div>
+    
+    
+    

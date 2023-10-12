@@ -21,13 +21,17 @@ import { AddDepartComponent } from './main/add-depart/add-depart.component';
 import { EditDepartComponent } from './main/edit-depart/edit-depart.component';
 import { AddPassagerDepartComponent } from './main/add-passager-depart/add-passager-depart.component';
 import { PassagerDepartComponent } from './main/passager-depart/passager-depart.component';
+import { authGuard} from './auth.guard';
+import { MesDepartComponent } from './main/mes-depart/mes-depart.component';
+import { MesBagagesComponent } from './main/mes-bagages/mes-bagages.component';
+
 
 const routes: Routes = [
-  {path:'', redirectTo:'login', pathMatch:'full'},
+  {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
-
   {path: 'home', component:HomeComponent,
+  
   children:[
   {path:'accueil', component:DashboardComponent},
   {path:'voiture', component:VoitureComponent},
@@ -47,8 +51,11 @@ const routes: Routes = [
   {path:'depart/addPassager', component:AddPassagerDepartComponent},
   {path:'depart/passager', component:PassagerDepartComponent},
   {path:'addDepart', component:AddDepartComponent},
+  {path:'passager/mesDeparts', component:MesDepartComponent},
+  {path:'passager/mesBagages', component:MesBagagesComponent},
   {path:'depart/deletePassager', component:PassagerDepartComponent},
-  ]},
+  ],
+},
 
 
 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import { map } from 'rxjs';
@@ -22,12 +22,15 @@ export class LoginService {
      map((userdata)=>{
       const token = userdata.body.token as string;
       const tokenInfo= this.getDecodedAccessToken(token);
+      
       localStorage.setItem('token', token);
+     
       localStorage.setItem('id', tokenInfo.userId);
       localStorage.setItem('email', userdata.body.user.email);
       localStorage.setItem('prenom', userdata.body.user.prenom);
       localStorage.setItem('nom',userdata.body.user.nom);
       localStorage.setItem('key', tokenInfo.key);
+      localStorage.setItem('role', userdata.body.user.role);
       return userdata;
      })
     )
@@ -43,6 +46,7 @@ export class LoginService {
     localStorage.removeItem('prenom');
     localStorage.removeItem('nom');
     localStorage.removeItem('id');
+    localStorage.removeItem('role');
   }
 }
 

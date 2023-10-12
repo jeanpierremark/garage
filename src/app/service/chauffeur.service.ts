@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,14 @@ export class ChauffeurService {
 
   constructor(private http : HttpClient) { }
 
+   headers = new HttpHeaders({
+    authorization: `Bearer ${localStorage.getItem('token')}`
+  });
+
     getAllChauffeur(){
+      console.log(this.headers)
       return this.http.get<any>('http://localhost:3000/api/chauffeur/all',{observe : "response"});
+     
     }
     getChauffeurById(id:any){
       return this.http.get<any>('http://localhost:3000/api/chauffeur/getOne/'+id,{observe : "response"});

@@ -29,6 +29,11 @@ import { VoitureChauffeurComponent } from './main/voiture-chauffeur/voiture-chau
 import { BagageComponent } from './main/bagage/bagage.component';
 import { AddPassagerDepartComponent } from './main/add-passager-depart/add-passager-depart.component';
 import { PassagerDepartComponent } from './main/passager-depart/passager-depart.component';
+import { MesDepartComponent } from './main/mes-depart/mes-depart.component';
+import { MesBagagesComponent } from './main/mes-bagages/mes-bagages.component';
+import { DatePipe } from '@angular/common';
+import { DetailComponent } from './main/detail/detail.component';
+
 
 
 @NgModule({
@@ -58,6 +63,10 @@ import { PassagerDepartComponent } from './main/passager-depart/passager-depart.
     BagageComponent,
     AddPassagerDepartComponent,
     PassagerDepartComponent,
+    MesDepartComponent,
+    MesBagagesComponent,
+    DetailComponent,
+    
     
   ],
   imports: [
@@ -67,7 +76,9 @@ import { PassagerDepartComponent } from './main/passager-depart/passager-depart.
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
