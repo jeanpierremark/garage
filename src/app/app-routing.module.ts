@@ -24,6 +24,8 @@ import { PassagerDepartComponent } from './main/passager-depart/passager-depart.
 import { authGuard} from './auth.guard';
 import { MesDepartComponent } from './main/mes-depart/mes-depart.component';
 import { MesBagagesComponent } from './main/mes-bagages/mes-bagages.component';
+import { DetailComponent } from './main/detail/detail.component';
+import { CalendrierComponent } from './main/calendrier/calendrier.component';
 
 
 const routes: Routes = [
@@ -54,6 +56,8 @@ const routes: Routes = [
   {path:'passager/mesDeparts', component:MesDepartComponent},
   {path:'passager/mesBagages', component:MesBagagesComponent},
   {path:'depart/deletePassager', component:PassagerDepartComponent},
+  {path:'passager/perte', component:DetailComponent},
+  {path:'calendrier', component:CalendrierComponent},
   ],
 },
 

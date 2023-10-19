@@ -59,19 +59,7 @@
                             </div>
                       </div>
 
-                      <div class="container mt-3 form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <!-- Utilisez une classe Bootstrap d'icône, par exemple, "bi bi-envelope" pour une icône d'enveloppe -->
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </span>
-                                </div>
-                                <input type="text" name="date" required [class.is-invalid]="date.invalid && date.touched " [class.is-valid]="libelle.valid" #date="ngModel" [(ngModel)]="bagage.date" tabindex="1" class="form-control" placeholder="aaaa-mm-jj " value="{{dateT}}" [contentEditable]="false">
-                                <small class="text-danger" [class.d-none]=" date.untouched || date.valid"> Veuillez saisir la date d'enregistrement </small>
-    
-                            </div>
-                      </div>
+                      
             
                   
                     <div class="mt-3 form-group">

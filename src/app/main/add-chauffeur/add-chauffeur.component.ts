@@ -87,8 +87,9 @@ export class AddChauffeurComponent {
     .subscribe({
       next:(data) => {
          if(data.body.message == "Success"){
-          window.location.reload()
-         this.router.navigate(["/home/chauffeur"])
+        
+          this.showAlertMessage("Success","Chauffeur addesd successfully","success")
+         window.location.reload()
         
         }
         else if(data.body.message == "exist"){
@@ -130,9 +131,9 @@ export class AddChauffeurComponent {
 
     }).then((result)=>{
         if(result.isConfirmed){
-          if(icon == "warning"){
+          if(icon == "success"){
 
-            this.router.navigate(["/home/newChauffeur"])
+            this.router.navigate(["/home/chauffeur"])
           }
 
         }

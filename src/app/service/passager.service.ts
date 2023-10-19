@@ -26,7 +26,7 @@ export class PassagerService {
       return this.http.get<any>('http://localhost:3000/api/passager/getOneBagage/'+id,{observe :"response"});
     }
 
-    addBagage(id:number,libelle:string,quantite :string,date:string) {
+    addBagage(id:number,libelle:string,quantite :string,date :string) {
       return this.http.post<any>('http://localhost:3000/api/passager/createBagage/'+id ,{id,libelle,quantite,date},{observe:"response"});
     }
 
@@ -42,6 +42,9 @@ export class PassagerService {
     }
     updatePassager(id:number,prenom:string,nom:string,adresse:string,telephone:string,carteId :string) {
       return this.http.put<any>('http://localhost:3000/api/passager/updatePassager/'+id ,{prenom,nom,adresse,telephone,carteId},{observe :"response"});
+    }
+    updatePerte(id:number) {
+      return this.http.put<any>('http://localhost:3000/api/passager/updatePerte/'+id ,{observe :"response"});
     }
     deleteBagage(id : number){
       return this.http.delete<any>('http://localhost:3000/api/passager/deleteBagage/'+id,{observe:"response"});

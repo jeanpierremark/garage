@@ -33,6 +33,10 @@ import { MesDepartComponent } from './main/mes-depart/mes-depart.component';
 import { MesBagagesComponent } from './main/mes-bagages/mes-bagages.component';
 import { DatePipe } from '@angular/common';
 import { DetailComponent } from './main/detail/detail.component';
+import { CalendrierComponent } from './main/calendrier/calendrier.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { DataTablesModule } from 'angular-datatables';
+
 
 
 
@@ -66,6 +70,7 @@ import { DetailComponent } from './main/detail/detail.component';
     MesDepartComponent,
     MesBagagesComponent,
     DetailComponent,
+    CalendrierComponent,
     
     
   ],
@@ -74,7 +79,9 @@ import { DetailComponent } from './main/detail/detail.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FullCalendarModule,
+    DataTablesModule 
   ],
   providers: [
     DatePipe

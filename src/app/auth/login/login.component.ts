@@ -110,9 +110,7 @@ showAlertMessage( title:string, message:string, icon:any ){
     //confirmButtonText: '',
 
   }).then((result)=>{
-      if(result.isConfirmed){
 
-  }
 })
 }
 }

@@ -33,17 +33,17 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
-              You have {{notif}} new notifications
-              
+              Vous avez {{notif}} nouvelle(s) perte(s) non traitées
+              <a [routerLink]="['/home/passager/perte']"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <div *ngFor=" let perte of pertes">
             <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
+              <i class="bi bi-person-fill text-primary"></i>
               <div>
-                <h4>{{perte.prenom}} {{perte.nom}} <a href="" class="btn btn-primary"><span class="bi bi-eye "></span></a></h4>
+                <h4>{{perte.prenom}} {{perte.nom}} </h4>
                 <p> Perte de {{perte.libelle}}</p>
                 <p>{{perte.quantite}}</p>
               </div>

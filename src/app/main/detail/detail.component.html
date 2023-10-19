@@ -1,1 +1,99 @@
-<p>detail works!</p>
+
+
+
+
+
+
+
+
+
+
+<body>
+  
+  
+<main id="main" class="main">
+   
+  <h1 style="color:darkblue" class="text-danger"><span class="bi bi-person">&nbsp;</span>Les Pertes non traitées <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "></span></h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="['/home/accueil']">Accueil</a></li>
+      <li class="breadcrumb-item active">Perte</li>
+    </ol>
+  </nav>
+  <section class="section dashboard">
+
+
+    <div class="card">
+      <div class="card-header justify-content-between" style="border-top:4px solid #b6cbf2">
+          <h3>Liste des Départs</h3>
+      </div>
+          <div class="card-body">
+    <table id="example" class=" table  table-striped col-lg-16  " style=" background: white; border: 0px; width:100%"> 
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Chauffeur</th>
+          <th scope="col">Téléphone</th>
+      
+        </tr>
+      </thead>
+      <tbody>
+  
+              <tr *ngFor="let depart of departs">
+                  <td>{{depart.dateHeure}}   </td>
+                  <td>{{depart.destination}}</td>
+                  <td>{{depart.prenom}} {{depart.nom}}</td>
+                  <td>{{depart.telephone}}</td>
+                  
+              </tr>
+         
+         
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+    <div class="row">
+
+    <div class="col-xxl-4 col-xl-12" *ngFor=" let perte of pertes">
+    <div class="card info-card revenue-card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+        
+          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+            <i class="bi bi-person"></i>
+          </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+          <div >
+           <br>             
+              <div>
+                <h4><span class="text-primary"> <strong> {{perte.prenom}} {{perte.nom}} </strong></span></h4>
+                <p> Perte de <span class="text-secondary">{{perte.libelle}}</span></p>
+                <p>Quantité <span class="text-secondary">{{perte.quantite}}</span></p>
+                <p> Date d'enregistrement <span class="text-secondary">{{perte.date}}</span></p>
+                <p> Numéro de Téléphone <span class="text-secondary">{{perte.telephone}}</span></p>
+                <p>Adresse <span class="text-secondary">{{perte.adresse}}</span></p>
+                <p> Numéro de carte  <span class="text-secondary">{{perte.carteId}}</span></p>
+                <p> Destination <span class="text-secondary">{{perte.destination}}</span></p>
+                <p> Date du départ <span class="text-secondary">{{perte.dateHeure}}</span></p>
+              </div>
+            
+
+           
+              <button (click)="updatePerte(perte.id)" class="btn btn-success" style="margin-left: 400px;">Marquer comme traitéé</button>
+            
+            </div><br>
+        </div>
+      </div>
+
+    </div>
+  </div>     
+         
+    </div>
+  </section>
+    <main>
+     
+    

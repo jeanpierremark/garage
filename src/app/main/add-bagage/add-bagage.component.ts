@@ -20,9 +20,7 @@ passager :any =[];
   ngOnInit() : any {
     this.route.queryParamMap.subscribe(params => {
       this.id = params.get('id');
-      this.today = new Date();
-      this.dateT = this.datePipe.transform(this.today, 'yyyy/MM/dd');
-      this.bagage.date =this.dateT;
+      this.dateT = params.get('dateh')
     }) 
     
   this.passagerService.getPassagerById(this.id).subscribe(
@@ -46,7 +44,7 @@ passager :any =[];
     this.id,
     this.bagage.libelle,
     this.bagage.quantite,
-    this.bagage.date
+    this.dateT
     ).subscribe({
       next:(data)=>{
         if(data.body.message =="success"){

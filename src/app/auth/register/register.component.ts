@@ -87,6 +87,7 @@ export class RegisterComponent {
       next:(data) => {
          if(data.body.message == "Success"){
          this.router.navigate(["/login"])
+         this.showAlertMessage("Success","Informations saved successfully","success")
         
         }
         else if(data.body.message == "exist"){

@@ -34,27 +34,16 @@
             <i class="ri-bus-fill"></i><span>Voitures</span>
           </a>
       </li><!-- End Voitures Nav -->
+
+      <li class="nav-item" *ngIf="status === 'admin'">
+        <hr>
+        <a class="nav-link collapsed"  data-bs-toggle="collapse" [routerLink]="['/home/depart']">
+          <i class="bi bi-alarm-fill" ></i><span>Départs</span>
+        </a>
+        </li><!-- End Voitures Nav -->
       
 
-<li class="nav-item" *ngIf="status === 'admin'">
-  <hr>
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-alarm-fill"></i><span>Départs</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a  [routerLink]="['/home/depart']">
-              <i class="bi bi-circle"></i><span>Liste</span>
-            </a>
-          </li>
-          <hr>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Calendrier</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Departs Nav -->
+
       
       
      
