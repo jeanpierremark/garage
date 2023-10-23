@@ -1,12 +1,12 @@
 
 <body>
     <main id="main" class="main">
-    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-alarm-fill">&nbsp;</span>Depart <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "><i class="text-danger">{{voiture.type}} {{voiture.matricule}}</i></span></h1>
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-alarm-fill">&nbsp;</span>Depart <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "></span></h1>
     <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a routerLink="['accueil']">Accueil</a></li>
           <li class="breadcrumb-item "><a  routerLink="['depart']">Depart</a></li>
-          <li class="breadcrumb-item active "><span class="text-info"> <strong>{{voiture.type}} {{voiture.matricule}}</strong></span> </li>
+          <li class="breadcrumb-item active "><span class="text-danger"> <strong>{{voiture.type}} {{voiture.matricule}}</strong></span> </li>
 
         </ol>
       </nav>

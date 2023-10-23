@@ -11,7 +11,7 @@
     
                 <div class="card">
                     <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
-                        <h3>Liste des Chauffeurs <span style="padding-right: 10px;"><a href="/home/newChauffeur" class="btn btn-success btn-icon-split">
+                        <h3>Liste des Chauffeurs <span style="padding-right: 10px;"><a [routerLink]="['/home/newChauffeur']" class="btn btn-success btn-icon-split">
                           <span class="icon text-gray-600">
                               <i class="bi bi-person-plus-fill"></i>
                           </span>
@@ -20,7 +20,7 @@
                     </div>
                         <div class="card-body">
                        
-                        <table id="example" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
+                        <table  datatable [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
                             <thead>
                               <tr>
                                 <th scope="col">Prenom</th>
@@ -42,10 +42,10 @@
                                         
                                         <td>
                                            
-                                            <a href="/home/editChauffeur?id={{chauffeur.id}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
-                                            <a href="/home/chauffeur/allVoitures?id={{chauffeur.id}}" class="btn btn-warning"><span class="ri-bus-2-fill"></span></a>&nbsp;&nbsp;
-                                            <a href="/home/chauffeur/newVoiture?id={{chauffeur.id}}" class="btn btn-success"><span class="ri-bus-fill"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
-                                            <button  class="btn btn-danger " (click)="deleteChauffeur(chauffeur.id)" ><span class="bi bi-trash-fill"></span></button>
+                                            <a [routerLink]="['/home/editChauffeur']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 12px;" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
+                                            <a [routerLink]="['/home/chauffeur/allVoitures']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 12px;" class="btn btn-warning"><span class="ri-bus-2-fill"></span></a>&nbsp;&nbsp;
+                                            <a [routerLink]="['/home/chauffeur/newVoiture']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 12px;" class="btn btn-success"><span class="ri-bus-fill"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
+                                            <button  class="btn btn-danger " (click)="deleteChauffeur(chauffeur.id)" ><span style="margin-bottom: 12px;" class="bi bi-trash-fill"></span></button>
                                             
                                            
                                         </td>

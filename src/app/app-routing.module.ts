@@ -21,7 +21,7 @@ import { AddDepartComponent } from './main/add-depart/add-depart.component';
 import { EditDepartComponent } from './main/edit-depart/edit-depart.component';
 import { AddPassagerDepartComponent } from './main/add-passager-depart/add-passager-depart.component';
 import { PassagerDepartComponent } from './main/passager-depart/passager-depart.component';
-import { authGuard} from './auth.guard';
+import { AuthGuard} from './auth.guard';
 import { MesDepartComponent } from './main/mes-depart/mes-depart.component';
 import { MesBagagesComponent } from './main/mes-bagages/mes-bagages.component';
 import { DetailComponent } from './main/detail/detail.component';
@@ -58,7 +58,7 @@ const routes: Routes = [
   {path:'depart/deletePassager', component:PassagerDepartComponent},
   {path:'passager/perte', component:DetailComponent},
   {path:'calendrier', component:CalendrierComponent},
-  ],
+  ]
 },
 
 

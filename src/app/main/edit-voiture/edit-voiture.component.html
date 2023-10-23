@@ -1,12 +1,12 @@
 
 <body>
     <main id="main" class="main">
-    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-person-standing">&nbsp;</span>Chauffeur <span class="breadcrumb-item text-secondary small text-warning " style="font-size: 19px;"> <strong>{{voiture.type}} {{voiture.matricule}}</strong></span></h1>
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-person-standing">&nbsp;</span>Chauffeur <span class="breadcrumb-item text-secondary small text-warning " style="font-size: 19px;"> <strong>{{vtt.type}} {{vtt.matricule}}</strong></span></h1>
     <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="home/accueil">Accueil</a></li>
           <li class="breadcrumb-item"><a href="home/Voiture">Voiture</a></li>
-          <li class="breadcrumb-item active">{{voiture.type}} {{voiture.matricule}}</li>
+          <li class="breadcrumb-item active">{{vtt.type}} {{vtt.matricule}}</li>
         </ol>
       </nav>
     
@@ -26,7 +26,7 @@
               <div class="card-body">
 
                 <div class="pt-4 pb-2">
-                  <h5 class="card-title text-center pb-0 fs-4"><div style="text-align: center;">Editing  Voiture  <strong  class="text-danger">  {{voiture.type}} {{voiture.matricule}}</strong></div></h5>
+                  <h5 class="card-title text-center pb-0 fs-4"><div style="text-align: center;">Editing  Voiture  <strong  class="text-danger">  {{vtt.type}} {{vtt.matricule}}</strong></div></h5>
                   
                 </div>
 
@@ -63,7 +63,7 @@
                           </span>
                           </div>
                           <input type="matricule" name="matricule" id="matricule" required [class.is-invalid]="matricule.invalid && matricule.touched " [class.is-valid]="matricule.valid" #matricule="ngModel" [(ngModel)]="voiture.matricule" tabindex="2" class="form-control" placeholder="Matricule">
-                          <small class="text-danger" [class.d-none]=" matricule.untouched || matricule.valid"> Veuillez saisir votre nom </small>
+                          <small class="text-danger" [class.d-none]=" matricule.untouched || matricule.valid"> Veuillez saisir la matricule </small>
                       </div>
                       
                   </div>

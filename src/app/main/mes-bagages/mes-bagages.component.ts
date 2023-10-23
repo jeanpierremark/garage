@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 import { PassagerService } from 'src/app/service/passager.service';
 import Swal from 'sweetalert2';
 
@@ -15,9 +16,16 @@ id :any
 bagages: any=[];
 passager :any=[];
 user: any=[];
+dtOptions :DataTables.Settings = {}
+  dtTrigger :Subject<any> = new Subject<any>();
   constructor(private route: ActivatedRoute,private passagerService:PassagerService){}
-
-  ngOnInit() : any {
+  
+  ngOnInit(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      autoWidth: true,
+    };
     this.userId =localStorage.getItem('id');
     this.passagerService.getPassagerByUser(this.userId).subscribe({
       next:(response) =>{
@@ -27,6 +35,7 @@ user: any=[];
             next :(data) =>{
               if(data.body.message =="success"){
                 this.bagages = data.body.bagages;
+                this.dtTrigger.next(null);
                 console.log(this.bagages);
               }
             }, error:(err) => {

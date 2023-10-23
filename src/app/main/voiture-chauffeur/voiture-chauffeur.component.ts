@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { ChauffeurService } from 'src/app/service/chauffeur.service';
 import { VoitureService } from 'src/app/service/voiture.service';
 import Swal from 'sweetalert2';
@@ -14,8 +15,14 @@ voitures :any =[];
 id :any;
 chauffeur :any =[];
 constructor(private router:Router, private route : ActivatedRoute,private chauffeurService:ChauffeurService,private voitureService :VoitureService){}
-
-ngOnInit() {
+dtOptions :DataTables.Settings = {}
+dtTrigger :Subject<any> = new Subject<any>();
+ngOnInit(){
+  this.dtOptions = {
+    pagingType: 'full_numbers',
+    pageLength: 10,
+    autoWidth: true,
+  };
   this.route.queryParamMap.subscribe(params => {
     this.id = params.get('id');
 
@@ -46,6 +53,7 @@ getVoitures(){
     next :(data) =>{
       if(data.body.message =="success"){
         this.voitures = data.body.voitures;
+        this.dtTrigger.next(null);
         console.log(this.voitures);
       }
     }, error:(err) => {
@@ -98,7 +106,7 @@ showAlertMessage( title:string, message:string, icon:any ){
   }).then((result)=>{
       if(result.isConfirmed){
         if(icon == "success"){
-          window.location.reload()
+          
           this.router.navigate(["/home/chauffeur/allVoitures?id="+this.id])
         }
 

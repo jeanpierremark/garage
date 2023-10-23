@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { ChauffeurService } from 'src/app/service/chauffeur.service';
 import Swal from 'sweetalert2';
 
@@ -11,13 +12,19 @@ import Swal from 'sweetalert2';
 export class ChauffeurComponent {
 
   chauffeurs : any = [];
-   
   id : any;
+  dtOptions :DataTables.Settings = {}
+  dtTrigger :Subject<any> = new Subject<any>();
 
 constructor(private router : Router,private route :ActivatedRoute,private chauffeurService:ChauffeurService){}
 
 
-ngOnInit() : any {
+ngOnInit(){
+  this.dtOptions = {
+    pagingType: 'full_numbers',
+    pageLength: 10,
+    autoWidth: true,
+  };
   
   this.route.queryParamMap.subscribe(params => {
   this.id = params.get('id');})
@@ -33,6 +40,7 @@ ngOnInit() : any {
         console.log(response.body.message);
           if(response.body.message == "success"){
             this.chauffeurs = response.body.chauffeurs
+            this.dtTrigger.next(null);
           }
           console.log(this.chauffeurs);
           //this.router.navigate(["voiture"]);

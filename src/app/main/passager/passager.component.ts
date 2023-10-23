@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { PassagerService } from 'src/app/service/passager.service';
 import Swal from 'sweetalert2';
 
@@ -11,10 +12,17 @@ import Swal from 'sweetalert2';
 export class PassagerComponent {
 
   passagers : any = [];
+  dtOptions :DataTables.Settings = {}
+  dtTrigger :Subject<any> = new Subject<any>();
    
   constructor(private router: Router, private passagerService : PassagerService){}
-
-  ngOnInit(): void {
+ 
+  ngOnInit(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      autoWidth: true,
+    };
     this.getAllPassager()
 }
 
@@ -25,7 +33,8 @@ export class PassagerComponent {
         console.log(response.body.message);
           if(response.body.message == "success"){
             this.passagers = response.body.passagers
-           
+            this.dtTrigger.next(null);
+        
           }
           console.log(this.passagers);
           //this.router.navigate(["voiture"]);

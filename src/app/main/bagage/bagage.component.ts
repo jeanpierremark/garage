@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { PassagerService } from 'src/app/service/passager.service';
 import Swal from 'sweetalert2';
 
@@ -15,7 +16,14 @@ export class BagageComponent {
   passager :any =[];
   constructor(private router:Router, private route : ActivatedRoute,private passagerService:PassagerService){}
   
-  ngOnInit() {
+  dtOptions :DataTables.Settings = {}
+  dtTrigger :Subject<any> = new Subject<any>();
+  ngOnInit(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      autoWidth: true,
+    };
     this.route.queryParamMap.subscribe(params => {
       this.id = params.get('id');
   
@@ -47,6 +55,7 @@ export class BagageComponent {
       next :(data) =>{
         if(data.body.message =="success"){
           this.bagages = data.body.bagages;
+          this.dtTrigger.next(null);
           console.log(this.bagages);
         }
       }, error:(err) => {

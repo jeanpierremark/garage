@@ -15,7 +15,7 @@
                     </div>
                         <div class="card-body">
                        
-                        <table id="example" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
+                        <table datatable [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
                             <thead>
                               <tr>
                                 <th scope="col">Prenom</th>
@@ -37,7 +37,7 @@
                                         
                                         <td>
                                            
-                                          <a href="/home/passager/addBagage?id={{passager.id}}&dateh={{depart.dateHeure}}"  class="btn btn-primary"><span class="bi bi-bag-plus-fill"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
+                                          <a [routerLink]="['/home/passager/addBagage']"   [queryParams]="{ id:passager.id,dateh:depart.dateHeure}"  class="btn btn-primary"><span class="bi bi-bag-plus-fill"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
                                             <button (click)="deletePassagerDepart(depart.voitureId,depart.dateHeure,passager.id,depart.destination)"  class="btn btn-danger " ><span class="bi bi-trash-fill"></span></button>
                                             
                                            

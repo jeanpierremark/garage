@@ -13,7 +13,7 @@
                 </div>
                     <div class="card-body">
                    
-                    <table datatable [dtOptions]="dtOptions" class=" table  table-striped col-lg-16  " style=" background: white; border: 0px; width:100%"> 
+                    <table datatable [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger" class=" table  table-striped col-lg-16  " style=" background: white; border: 0px; width:100%"> 
                         <thead>
                           <tr>
                             <th scope="col">Depart</th>
@@ -33,10 +33,10 @@
                                     
                                     <td>
                                        
-                                        <a href="/home/editDepart?id={{depart.voitureId}}&dateHeure={{depart.dateHeure}}" class="btn btn-primary" style="margin-bottom: 12px;"><span class="bi bi-pencil-square"></span></a>&nbsp; 
-                                        <a href="/home/depart/addPassager?id={{depart.voitureId}}&dateHeure={{depart.dateHeure}}"  class="btn btn-success "  style="margin-bottom: 12px;"><span class="bi bi-person-plus-fill"></span></a>&nbsp;
-                                        <a href="/home/depart/passager?id={{depart.voitureId}}&dateHeure={{depart.dateHeure}}&destination={{depart.destination}}"  class="btn btn-warning "  style="margin-bottom: 12px;" ><span class="bi bi-people-fill"></span></a>&nbsp;
-                                        <button  class="btn btn-danger " (click)="deleteDepart(depart.voitureId,depart.dateHeure)"><span class="bi bi-trash-fill"></span></button>
+                                        <a [routerLink]="['/home/editDepart']"   [queryParams]="{ id: depart.id,dateHeure :depart.dateHeure}"  class="btn btn-primary" style="margin-bottom: 12px;"><span class="bi bi-pencil-square"></span></a>&nbsp; 
+                                        <a [routerLink]="['/home/depart/addPassager']"   [queryParams]="{ id: depart.id,dateHeure :depart.dateHeure}" class="btn btn-success"  style="margin-bottom: 12px;"><span class="bi bi-person-plus-fill"></span></a>&nbsp;
+                                        <a [routerLink]="['/home/depart/passager']"   [queryParams]="{ id: depart.id,dateHeure :depart.dateHeure,destination:depart.destination}"  style="margin-bottom: 12px;" class="btn btn-warning "  style="margin-bottom: 12px;" ><span class="bi bi-people-fill"></span></a>&nbsp;
+                                        <button style="margin-bottom: 12px;" class="btn btn-danger " (click)="deleteDepart(depart.id,depart.dateHeure)"><span class="bi bi-trash-fill"></span></button>
                                        
                                     </td>
                                 </tr>

@@ -29,6 +29,7 @@ ngOnInit() : any {
     next:(data) => {
        if(data.body.message == "success"){
         this.bagage = data.body.bagage;
+       
         this.idPassager = this.bagage.passagerId;
         console.log(this.bagage);
         console.log(this.idPassager);

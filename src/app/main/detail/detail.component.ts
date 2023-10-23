@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
 import { DepartService } from 'src/app/service/depart.service';
 import { PassagerService } from 'src/app/service/passager.service';
 import { UserService } from 'src/app/service/user.service';
@@ -14,7 +15,14 @@ export class DetailComponent {
   constructor(private userService :UserService ,private passagerService :PassagerService,private departService :DepartService) { }
 pertes :any =[]
 departs :any =[];
+dtOptions :DataTables.Settings = {}
+dtTrigger :Subject<any> = new Subject<any>();
 ngOnInit(){
+  this.dtOptions = {
+    pagingType: 'full_numbers',
+    pageLength: 10,
+    autoWidth: true,
+  };
   this.getPerte();
   this.getAllDepart();
 }
@@ -24,7 +32,8 @@ ngOnInit(){
       next: (response)=>{
         if(response.body.message =='success'){
           this.pertes = response.body.perteData;
-         console.log(this.pertes)
+          
+        
         }
       }
     })
@@ -37,7 +46,8 @@ ngOnInit(){
       next:(response) =>{
         console.log(response.body.message);
           if(response.body.message == "success"){
-            this.departs = response.body.departData
+            this.departs = response.body.departData;
+            this.dtTrigger.next(null);
           }
           console.log(this.departs);
           //this.router.navigate(["voiture"]);

@@ -48,7 +48,7 @@ ngOnInit(){
         ).subscribe({
           next:(data)=>{
             if(data.message =="success"){
-              window.location.reload()
+             
               this.showAlertMessage("Success","Informations saved succesfully ","success")
               this.router.navigate(["/home/depart"])
             }else if(data.message == "not found"){
@@ -84,7 +84,7 @@ ngOnInit(){
       }).then((result)=>{
           if(result.isConfirmed){
             if(icon == "success"){
-              this.router.navigate(["/home/depart"])
+             
             }
     
           }

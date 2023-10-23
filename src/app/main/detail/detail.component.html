@@ -28,7 +28,7 @@
           <h3>Liste des Départs</h3>
       </div>
           <div class="card-body">
-    <table id="example" class=" table  table-striped col-lg-16  " style=" background: white; border: 0px; width:100%"> 
+    <table datatable [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger" class=" table  table-striped col-lg-16  " style=" background: white; border: 0px; width:100%"> 
       <thead>
         <tr>
           <th scope="col">Date</th>

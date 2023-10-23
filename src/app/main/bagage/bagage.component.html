@@ -1,28 +1,29 @@
 
 <body>
     <main id="main" class="main">
-    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-people-fill">&nbsp;</span>Passager <span class="breadcrumb-item text-secondary small" style="font-size: 15px; "><i class="text-danger" style="font-weight: bold;">{{passager.prenom}} {{passager.nom}}</i></span></h1>
+    <h1 style="color:darkblue" class="text-primary"><span class="bi bi-people-fill">&nbsp;</span>Passager </h1>
     <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a routerLink="['accueil']">Accueil</a></li>
-          <li class="breadcrumb-item "><a  routerLink="['passager']">Passager</a></li>
-          <li class="breadcrumb-item active "><span class="text-succes "> <strong>{{passager.prenom}} {{passager.nom}}</strong></span> </li>
+          <li class="breadcrumb-item "><a  routerLink="['/home/passager']">Passager</a></li>
+       
 
         </ol>
       </nav>
     
                 <div class="card">
                     <div class="card-header justify-content-between" style="border-top:4px solid #a10909">
-                        <h3>Liste des Bagages  </h3> 
+                        <h3>Liste des Bagages <span class="text-danger"><strong>{{passager.prenom}} {{passager.nom}}</strong></span> </h3> 
                     </div>
                         <div class="card-body">
                        
-                        <table id="example" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
+                        <table datatable [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger" class=" table  table-striped col-lg-12" style=" background: white; border: 0px; "> 
                             <thead>
                               <tr>
                                 <th scope="col">Libellé</th>
                                 <th scope="col">Quantité</th>
-                                <th scope="col">Date Enregistrement</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Action</th>
                                
                               </tr>
                             </thead>
@@ -36,7 +37,7 @@
                                         
                                         <td>
                                            
-                                            <a href="/home/passager/editBagage?id={{bagage.id}}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
+                                            <a [routerLink]="['/home/passager/editBagage']"   [queryParams]="{ id:bagage.id}" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
                                             <button (click)="deleteBagage(bagage.id)" class="btn btn-danger " ><span class="bi bi-trash-fill"></span></button>
                                             
                                            

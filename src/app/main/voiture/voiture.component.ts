@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { VoitureService } from 'src/app/service/voiture.service';
 import Swal from 'sweetalert2';
 
@@ -11,10 +12,16 @@ import Swal from 'sweetalert2';
 export class VoitureComponent {
   id :any;
   voitures : any = [];
-   
+  dtOptions :DataTables.Settings = {}
+  dtTrigger :Subject<any> = new Subject<any>();
   constructor(private router: Router,private route : ActivatedRoute, private voitureService : VoitureService){}
-
-  ngOnInit(): void {
+  
+  ngOnInit(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      autoWidth: true,
+    };
     this.route.queryParamMap.subscribe(params => {
       this.id = params.get('id');})
     this.getAllVoiture()
@@ -26,7 +33,8 @@ export class VoitureComponent {
       next:(response) =>{
         console.log(response.body.message);
           if(response.body.message == "success"){
-            this.voitures = response.body.voitureData
+            this.voitures = response.body.voitureData;
+            this.dtTrigger.next(null);
           }
           console.log(this.voitures);
           //this.router.navigate(["voiture"]);
@@ -40,6 +48,7 @@ export class VoitureComponent {
     this.voitureService.deleteVoiture(id).subscribe({
       next:(data)=>{
         if(data.body.message =="success"){
+          this.router.navigate(["/home/chauffeur/allVoiture"])
           this.showAlertMessage("Success","Voiture deleted successfully","success")
         }
         else{
@@ -76,8 +85,8 @@ export class VoitureComponent {
     }).then((result)=>{
         if(result.isConfirmed){
           if(icon == "success"){
-            window.location.reload();
-            this.router.navigate(["/home/chauffeur/allVoiture"])
+            
+           
           }
   
         }

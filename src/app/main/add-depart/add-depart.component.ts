@@ -44,7 +44,6 @@ depart :any =[];
     ).subscribe({
       next:(data)=>{
         if(data.body.message =="success"){
-          window.location.reload();
           this.router.navigate(["/home/depart"]);
         }else{
           console.log(data.body.message)

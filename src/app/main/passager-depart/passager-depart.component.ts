@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { DepartService } from 'src/app/service/depart.service';
 import Swal from 'sweetalert2';
 
@@ -17,8 +18,14 @@ export class PassagerDepartComponent {
   depart :any = [];
   
   constructor(private router:Router,private route :ActivatedRoute,private departService :DepartService){}
-  
+  dtOptions :DataTables.Settings = {}
+  dtTrigger :Subject<any> = new Subject<any>();
   ngOnInit(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      autoWidth: true,
+    };
     this.route.queryParamMap.subscribe(params => {
         this.id = params.get('id');
         console.log('Valeur du paramètre "id" :', this.id);
@@ -53,7 +60,7 @@ export class PassagerDepartComponent {
             next:(data)=>{
               if(data.body.message =="success"){
                 this.passagers = data.body.passagers;
-               
+                this.dtTrigger.next(null);
               }      
             }
           })

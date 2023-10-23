@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { DepartService } from 'src/app/service/depart.service';
 import Swal from 'sweetalert2';
 
@@ -11,40 +12,33 @@ import Swal from 'sweetalert2';
 export class DepartComponent {
   departs : any = [];
    dtOptions :DataTables.Settings = {}
+   dtTrigger :Subject<any> = new Subject<any>();
   constructor(private router: Router, private departService : DepartService){}
 
   ngOnInit(): void {
-    
+    this.getAllDepart();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
-      processing: true, // Change this to true if you want to show a loading indicator
       autoWidth: true,
-      ajax: (dataTablesParameters: any, callback: any) => {
-        this.departService.getAllDepart().subscribe({
-          next: (response) => {
-           // console.log(response.message); // Utilisez response.message au lieu de response.body.message
-            if (response.body.message == "success") { // Utilisez === pour comparer les chaînes de caractères
-              this.departs = response.body.departData; // Utilisez response.departData au lieu de response.body.departData
-            }
-            console.log(this.departs);
-            callback({ // Appel de la fonction de rappel avec les données
-              recordsTotal: this.departs.length, // Nombre total de données
-              recordsFiltered: this.departs.length, // Nombre de données après filtration (si vous filtrez)
-              data: this.departs // Les données à afficher
-            });
-          },
-          error: (err) => {
-            console.log(err);
-          }
-        });
-      },
     };
     
   
 }
 
     getAllDepart(){
+      this.departService.getAllDepart().subscribe({
+        next: (response) => {
+          this.departs = response.body.departData;
+          this.dtTrigger.next(null);
+        
+          
+        },
+        error: (err) => {
+          console.log(err);
+        }
+
+      });
    
   }
 
@@ -52,6 +46,7 @@ export class DepartComponent {
     this.departService.deleteDepart(id,dateHeure).subscribe({
       next:(data)=>{
         if(data.body.message =="success"){
+          this.router.navigate(["/home/depart"])
           this.showAlertMessage("Success","Depart deleted successfully","success")
         }
         else{
@@ -88,8 +83,8 @@ export class DepartComponent {
     }).then((result)=>{
         if(result.isConfirmed){
           if(icon == "success"){
-            window.location.reload();
-            this.router.navigate(["/home/depart"])
+            
+           
           }
   
         }
