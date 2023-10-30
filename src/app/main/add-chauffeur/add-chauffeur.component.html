@@ -81,8 +81,10 @@
                                 <i class="bi bi-person-fill"></i>
                             </span>
                             </div>
-                            <input type="telephone" name="telephone" id="telephone" required [class.is-invalid]="telephone.invalid && telephone.touched " [class.is-valid]="telephone.valid" #telephone="ngModel" [(ngModel)]="user.telephone" tabindex="2" class="form-control" placeholder="Telephone">
-                            <small class="text-danger" [class.d-none]=" telephone.untouched || telephone.valid"> Veuillez saisir votre numero de téléphone </small>
+                            <input type="telephone" name="telephone" id="telephone"  pattern="^[0-9]{9}$"  required [class.is-invalid]="telephone.invalid && telephone.touched " [class.is-valid]="telephone.valid" #telephone="ngModel" [(ngModel)]="user.telephone" tabindex="2" class="form-control" placeholder="Telephone">
+                            <small class="text-danger" [class.d-none]="telephone.untouched || telephone.valid"> Veuillez saisir le numéro <br>de téléphone au bon format <br>(7 chiffres) </small>
+
+                           
                         </div>
                         
                     </div>
@@ -115,7 +117,7 @@
                             <i class="bi bi-person-fill"></i>
                         </span>
                         </div>
-                        <input type="text" name="numPermis" id="numPermis" required [class.is-invalid]="numPermis.invalid && numPermis.touched " [class.is-valid]="numPermis.valid" #numPermis="ngModel" [(ngModel)]="user.numPermis" tabindex="2" class="form-control" placeholder="Numero Permis">
+                        <input type="text" name="numPermis" id="numPermis" pattern="^[0-9]{14}$" required [class.is-invalid]="numPermis.invalid && numPermis.touched " [class.is-valid]="numPermis.valid" #numPermis="ngModel" [(ngModel)]="user.numPermis" tabindex="2" class="form-control" placeholder="Numero Permis">
                         <small class="text-danger" [class.d-none]=" numPermis.untouched || numPermis.valid"> Veuillez saisir votre numero de permis </small>
                     </div>
                     

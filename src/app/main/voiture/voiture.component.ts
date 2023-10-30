@@ -45,26 +45,40 @@ export class VoitureComponent {
 
 
   deleteVoiture(id :any){
-    this.voitureService.deleteVoiture(id).subscribe({
-      next:(data)=>{
-        if(data.body.message =="success"){
-          this.router.navigate(["/home/chauffeur/allVoiture"])
-          this.showAlertMessage("Success","Voiture deleted successfully","success")
-        }
-        else{
-          console.log(data.body.message)
-          this.showAlertMessage("Error","Error when deleting Voiture","error")
-        }
-  
-      },
-      error:(err) => {
-        console.log(err);
-        this.showAlertMessage("Error","Internal Server Error","danger")
-  
+    Swal.fire({
+      title: 'Do you want to delete this item?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.voitureService.deleteVoiture(id).subscribe({
+          next:(data)=>{
+            if(data.body.message =="success"){
+              this.router.navigate(["/home/chauffeur/allVoiture"])
+              this.showAlertMessage("Success","Voiture deleted successfully","success")
+            }
+            else{
+              console.log(data.body.message)
+              this.showAlertMessage("Error","Error when deleting Voiture","error")
+            }
+      
+          },
+          error:(err) => {
+            console.log(err);
+            this.showAlertMessage("Error","Internal Server Error","danger")
+      
+          }
+        })
+        
       }
-    })
-    
+    });    
   }
+
+
   showAlertMessage( title:string, message:string, icon:any ){
     return Swal.fire({
   

@@ -84,7 +84,7 @@
                               <i class="bi bi-person-fill"></i>
                           </span>
                           </div>
-                          <input type="number" name="telephone" id="telephone" required [class.is-invalid]="telephone.invalid && telephone.touched " [class.is-valid]="telephone.valid" #telephone="ngModel" [(ngModel)]="user.telephone" tabindex="2" class="form-control" placeholder="Telephone">
+                          <input type="telephone" name="telephone" pattern="^[0-9]{9}$" id="telephone" required [class.is-invalid]="telephone.invalid && telephone.touched " [class.is-valid]="telephone.valid" #telephone="ngModel" [(ngModel)]="user.telephone" tabindex="2" class="form-control" placeholder="Telephone">
                           <small class="text-danger" [class.d-none]=" telephone.untouched || telephone.valid"> Veuillez saisir le numero de téléphone </small>
                       </div>
                       
@@ -98,7 +98,7 @@
                                 <i class="bi bi-person-fill"></i>
                             </span>
                             </div>
-                            <input type="number" name="carteId" id="carteId" required [class.is-invalid]="carteId.invalid && carteId.touched " [class.is-valid]="carteId.valid" #carteId="ngModel" [(ngModel)]="passager.carteId" tabindex="2" class="form-control" placeholder="Carte ID">
+                            <input type="number" name="carteId" id="carteId" pattern="^[0-9]{13}$" required [class.is-invalid]="carteId.invalid && carteId.touched " [class.is-valid]="carteId.valid" #carteId="ngModel" [(ngModel)]="passager.carteId" tabindex="2" class="form-control" placeholder="Carte ID">
                             <small class="text-danger" [class.d-none]=" carteId.untouched || carteId.valid"> Veuillez saisir le numéro de carte </small>
                         </div>
                         

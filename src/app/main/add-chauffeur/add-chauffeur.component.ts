@@ -18,11 +18,12 @@ export class AddChauffeurComponent {
   passError = false;
   passConfError = false;
   emailError = false;
-
+  telError =false;
+  tel:any;
 
   constructor(private  userService : UserService,private router:Router) { }
 
-
+ 
   emailVerif(email:string){
 
     if((email.endsWith("@gmail.com"))||(email.endsWith("@yahoo.com"))||(email.endsWith("@hotmail.com")) ||(email.endsWith("@hotmail.fr"))||(email.endsWith("@yahoo.fr"))){

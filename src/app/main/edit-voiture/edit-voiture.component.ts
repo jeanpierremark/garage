@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
 export class EditVoitureComponent {
 id : any ;
 voiture : any = []
-vt:any=[];
-vtt:any = []
+t:any
+m:any 
 
 constructor(private router :Router, private route  : ActivatedRoute,private voitureService :VoitureService){}
 
@@ -28,8 +28,8 @@ ngOnInit() : any {
     next:(data) => {
        if(data.body.message == "success"){
         this.voiture = data.body.voiture;
-        this.vt=data.body.voiture;
-        this.vtt=this.vt
+        this.t=data.body.voiture.type;
+        this.m=data.body.voiture.matricule
         console.log(this.voiture);
       
       

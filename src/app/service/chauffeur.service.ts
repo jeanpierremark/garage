@@ -8,28 +8,32 @@ export class ChauffeurService {
 
   constructor(private http : HttpClient) { }
 
-   headers = new HttpHeaders({
-    authorization: `Bearer ${localStorage.getItem('token')}`
-  });
+  
+
+   httpOptions = {
+    headers: new HttpHeaders({
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+  };
 
     getAllChauffeur(){
-      console.log(this.headers)
-      return this.http.get<any>('http://localhost:3000/api/chauffeur/all',{observe : "response"});
+      
+      return this.http.get<any>('http://localhost:3000/api/chauffeur/all',{observe : "response",headers: this.httpOptions.headers}); 
      
     }
     getChauffeurById(id:any){
-      return this.http.get<any>('http://localhost:3000/api/chauffeur/getOne/'+id,{observe : "response"});
+      return this.http.get<any>('http://localhost:3000/api/chauffeur/getOne/'+id,{observe : "response",headers: this.httpOptions.headers});
     }
 
     deleteChauffeur(id:any){
-      return this.http.delete<any>('http://localhost:3000/api/chauffeur/delete/'+id,{observe : "response"});
+      return this.http.delete<any>('http://localhost:3000/api/chauffeur/delete/'+id,{observe : "response",headers: this.httpOptions.headers});
     }
 
     updateChauffeur(id:number,prenom: string,nom:string,adresse:string,telephone:number,numPermis :string){
-      return this.http.put<any>('http://localhost:3000/api/chauffeur/update/'+id ,{prenom,nom,adresse,telephone,numPermis},{observe :'response'});
+      return this.http.put<any>('http://localhost:3000/api/chauffeur/update/'+id ,{prenom,nom,adresse,telephone,numPermis},{observe :'response',headers: this.httpOptions.headers});
     }
     getVoitures(id:number){
-      return this.http.get<any>('http://localhost:3000/api/chauffeur/voiture/'+id,{observe:"response"});
+      return this.http.get<any>('http://localhost:3000/api/chauffeur/voiture/'+id,{observe:"response",headers: this.httpOptions.headers});
     }
 
 }

@@ -69,25 +69,45 @@ export class BagageComponent {
   
   
   deleteBagage(id :any){
-    this.passagerService.deleteBagage(id).subscribe({
-      next:(data)=>{
-        if(data.body.message =="success"){
-          this.showAlertMessage("Success","Bagage deleted successfully","success")
-        }
-        else{
-          console.log(data.body.message)
-          this.showAlertMessage("Error","Error when deleting Bagage ","warning")
-        }
-  
-      },
-      error:(err) => {
-        console.log(err);
-        this.showAlertMessage("Error","Internal Server Error","error")
-  
+
+    Swal.fire({
+      title: 'Do you want to delete this item?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.passagerService.deleteBagage(id).subscribe({
+          next:(data)=>{
+            if(data.body.message =="success"){
+              this.showAlertMessage("Success","Bagage deleted successfully","success")
+            }
+            else{
+              console.log(data.body.message)
+              this.showAlertMessage("Error","Error when deleting Bagage ","warning")
+            }
+      
+          },
+          error:(err) => {
+            console.log(err);
+            this.showAlertMessage("Error","Internal Server Error","error")
+      
+          }
+        })
+    
       }
-    })
+    });
+  
     
   }
+
+
+
+
+
   showAlertMessage( title:string, message:string, icon:any ){
     return Swal.fire({
   

@@ -67,6 +67,16 @@ export class PassagerDepartComponent {
       }
 
       deletePassagerDepart(id :any,dateHeure :any,passagerId :any,destination:any){
+         Swal.fire({
+      title: 'Do you want to delete this item?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.departService.deletePassagerDepart(id,dateHeure,passagerId,destination).subscribe({
           next:(data)=>{
             if(data.body.message =="success"){
@@ -85,10 +95,11 @@ export class PassagerDepartComponent {
       
           }
         })
-        
       }
+      });   
+  }
   
-      showAlertMessage( title:string, message:string, icon:any ){
+   showAlertMessage( title:string, message:string, icon:any ){
         return Swal.fire({
       
           title: title,

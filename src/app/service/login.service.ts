@@ -24,7 +24,7 @@ export class LoginService {
       const tokenInfo= this.getDecodedAccessToken(token);
       
       localStorage.setItem('token', token);
-     
+      console.log(token)
       localStorage.setItem('id', tokenInfo.userId);
       localStorage.setItem('email', userdata.body.user.email);
       localStorage.setItem('prenom', userdata.body.user.prenom);

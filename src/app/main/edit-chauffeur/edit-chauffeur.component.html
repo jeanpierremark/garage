@@ -84,7 +84,7 @@
                               <i class="bi bi-person-fill"></i>
                           </span>
                           </div>
-                          <input type="number" name="telephone" id="telephone" required [class.is-invalid]="telephone.invalid && telephone.touched " [class.is-valid]="telephone.valid" #telephone="ngModel" [(ngModel)]="user.telephone" tabindex="2" class="form-control" placeholder="Telephone">
+                          <input type="telephone" pattern="^[0-9]{9}$" name="telephone" id="telephone" required [class.is-invalid]="telephone.invalid && telephone.touched " [class.is-valid]="telephone.valid" #telephone="ngModel" [(ngModel)]="user.telephone" tabindex="2" class="form-control" placeholder="Telephone">
                           <small class="text-danger" [class.d-none]=" telephone.untouched || telephone.valid"> Veuillez saisir votre numero de téléphone </small>
                       </div>
                       
@@ -98,8 +98,8 @@
                                 <i class="bi bi-person-fill"></i>
                             </span>
                             </div>
-                            <input type="number" name="numPermis" id="numPermis" required [class.is-invalid]="numPermis.invalid && numPermis.touched " [class.is-valid]="numPermis.valid" #numPermis="ngModel" [(ngModel)]="chauffeur.numPermis" tabindex="2" class="form-control" placeholder="numPermis">
-                            <small class="text-danger" [class.d-none]=" numPermis.untouched || numPermis.valid"> Veuillez saisir le numéro de permis </small>
+                            <input type="text" name="numPermis" id="numPermis"  pattern="^[0-9]{14}$" required [class.is-invalid]="numPermis.invalid && numPermis.touched " [class.is-valid]="numPermis.valid" #numPermis="ngModel" [(ngModel)]="chauffeur.numPermis" tabindex="2" class="form-control" placeholder="numPermis">
+                            <small class="text-danger" [class.d-none]=" numPermis.untouched || numPermis.valid"> Veuillez saisir le numéro de permis et au bon format </small>
                         </div>
                         
                     </div>

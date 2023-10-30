@@ -15,15 +15,17 @@ export class LoginComponent {
 
   passError = false;
   emailError = false;
+  telephoneError = false;
  
   static admin: any;
   static passager: any;
   static islogin: any
+
   constructor(private login_service:LoginService,private router:Router) { }
 
  
+ 
   emailVerif(email:string){
-
     if((email.endsWith("@gmail.com"))||(email.endsWith("@yahoo.com"))||
        (email.endsWith("@hotmail.com"))||(email.endsWith("@hotmail.fr"))||
        (email.endsWith("@yahoo.fr"))){

@@ -60,7 +60,7 @@ ngOnInit(){
     this.passagerService.updatePerte(id).subscribe(
       {
         next : (response) =>{
-          if(response.body.message == "success"){
+          if(response.message == "success"){
             this.showAlertMessage("Success","Perte Traitée","success")
             window.location.reload()
           }
@@ -80,15 +80,7 @@ ngOnInit(){
       text: message,
       icon: icon,
       showCloseButton: true,
-      //showCancelButton: true,
-     // confirmButtonColor: '#3085d6',
-      //cancelButtonColor: '#d33',
-      //cancelButtonText: 'Retour',
-  
-      // position: 'top-end',
-      // timer: 3000
-  
-      // showCancelButton: showCancelButton,
+      
   
     }).then((result)=>{
         

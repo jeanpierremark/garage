@@ -12,12 +12,38 @@ import Swal from 'sweetalert2';
 export class AddDepartComponent {
 voiture :any = []
 id :any;
+dateError = false;
 depart :any =[];
-  constructor(private route: ActivatedRoute, private router: Router, private voitureService :VoitureService,private departService:DepartService){}
+chain="2023-10-04 12:30"
+chaine =new Date();
+constructor(private route: ActivatedRoute, private router: Router, private voitureService :VoitureService,private departService:DepartService){}
+
+dateVerif(dateHeure :string){
+  
+  if(parseInt(dateHeure.substring(0,4)) == this.chaine.getFullYear() 
+  && parseInt(dateHeure.substring(5,7)) >= this.chaine.getMonth()+1 
+  && parseInt(dateHeure.substring(5,7 ))<=12
+  && parseInt(dateHeure.substring(8,10 ))>=this.chaine.getDate()
+  && parseInt(dateHeure.substring(8,10 ))<= 31
+  && dateHeure.length ==16
+  && parseInt(dateHeure.substring(11,13 ))<= 23
+  && parseInt(dateHeure.substring(14,16 ))<= 59){
+    this.dateError = true;
+  }
+  else {
+    this.dateError=false;
+  }
+}
+
+
+
+
 
   ngOnInit() : any {
     this.route.queryParamMap.subscribe(params => {
       this.id = params.get('id');
+      console.log(parseInt(this.chain.substring(11,13)));
+      console.log(this.chain.length);
     }) 
     
   this.voitureService.getVoitureById(this.id).subscribe(
@@ -37,6 +63,14 @@ depart :any =[];
   } 
   
   addDepart(){
+    if(parseInt(this.depart.dateHeure.substring(0,4)) == this.chaine.getFullYear() 
+    && parseInt(this.depart.dateHeure.substring(5,7)) >= this.chaine.getMonth()+1 
+    && parseInt(this.depart.dateHeure.substring(5,7 ))<=12
+    && parseInt(this.depart.dateHeure.substring(8,10 ))>=this.chaine.getDate()
+    && parseInt(this.depart.dateHeure.substring(8,10 ))<= 31
+    && this.depart.dateHeure.length ==16
+    && parseInt(this.depart.dateHeure.substring(11,13 ))<= 23
+    && parseInt(this.depart.dateHeure.substring(14,16 ))<= 59){
    this.departService.addDepart(
     this.id,
     this.depart.dateHeure,
@@ -52,10 +86,15 @@ depart :any =[];
 
       },error:(err) => {
         console.log(err);
-        this.showAlertMessage("Error","Erreur au niveau du serveur","warning")
+        this.showAlertMessage("Error","Internal server error","warning")
 
       }
     })
+  }
+  else{
+    this.router.navigate(["/home/addDepart?id=" + this.id])
+    this.showAlertMessage("Error","veuillez écrir la date au format aaaa-mm-jj hh:mm et vérifier que la date est correcte ","warning")
+  }
       
   }
   showAlertMessage( title:string, message:string, icon:any){
@@ -79,7 +118,7 @@ depart :any =[];
         if(result.isConfirmed){
           if(icon == "warning"){
   
-            this.router.navigate(["/home/addDepart"])
+           
           }
   
         }

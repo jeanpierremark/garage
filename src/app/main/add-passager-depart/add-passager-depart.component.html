@@ -42,8 +42,8 @@
                                     <i class="bi bi-person-fill"></i>
                                 </span>
                                 </div>
-                                <input type="text" name="carteId" required [class.is-invalid]="carteId.invalid && carteId.touched " [class.is-valid]="carteId.valid" #carteId="ngModel" [(ngModel)]="passager.carteId" tabindex="1" class="form-control" placeholder="carteId" value="">
-                                <small class="text-danger" [class.d-none]=" carteId.untouched || carteId.valid"> Veuillez saisir le numero de la carte ID </small>
+                                <input type="text" name="carteId" pattern="^[0-9]{13}$" required [class.is-invalid]="carteId.invalid && carteId.touched " [class.is-valid]="carteId.valid" #carteId="ngModel" [(ngModel)]="passager.carteId" tabindex="1" class="form-control" placeholder="carteId" value="">
+                                <small class="text-danger" [class.d-none]=" carteId.untouched || carteId.valid"> Veuillez saisir le numero de <br>la carte ID et au bon format <br> (13 chiffres) </small>
     
                             </div>
                       </div>

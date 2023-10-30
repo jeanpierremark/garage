@@ -53,9 +53,12 @@
                                       <i class="bi bi-alarm-fill"></i>
                                   </span>
                                   </div>
-                                  <input type="text" name="dateHeure" required [class.is-invalid]="dateHeure.invalid && dateHeure.touched " [class.is-valid]="dateHeure.valid" #dateHeure="ngModel" [(ngModel)]="depart.dateHeure" tabindex="1" class="form-control" placeholder="aaaa-mm-jj hh:mm" value="">
-                                  <small class="text-danger" [class.d-none]=" dateHeure.untouched || dateHeure.valid"> Veuillez saisir La date et l'heure </small>
-      
+                                  <input type="dateHeure" id="dateHeure" name="dateHeure" required [class.is-invalid]="dateError || (dateHeure.invalid && dateHeure.touched)" [class.is-valid]="dateHeure.valid" #dateHeure="ngModel" [(ngModel)]="depart.dateHeure" tabindex="1" class="form-control" placeholder="aaaa-mm-jj hh:mm" >
+                                
+                                    <small class="text-danger" [class.d-none]=" dateHeure.untouched || dateHeure.valid"> Veuillez saisir La date et l'heure </small>
+                                
+                                  
+                                  
                               </div>
                         </div>
   
