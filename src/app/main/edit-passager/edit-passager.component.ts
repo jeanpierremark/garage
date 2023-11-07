@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PassagerService } from 'src/app/service/passager.service';
 import Swal from 'sweetalert2';
@@ -19,7 +20,7 @@ user :any =[]
 
 
 
-constructor(private router :Router, private route  : ActivatedRoute,private passagerService :PassagerService){}
+constructor(private router :Router, private route  : ActivatedRoute,private passagerService :PassagerService , private location :Location){}
 
 ngOnInit() : any {
   this.route.queryParamMap.subscribe(params => {
@@ -42,7 +43,9 @@ ngOnInit() : any {
 })
 }
 
-
+retour(){
+  this.location.back();
+}
 
 updatePassager(){
   this.passagerService.updatePassager(

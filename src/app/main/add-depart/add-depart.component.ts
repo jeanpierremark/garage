@@ -67,6 +67,7 @@ dateVerif(dateHeure :string){
     && parseInt(this.depart.dateHeure.substring(5,7)) >= this.chaine.getMonth()+1 
     && parseInt(this.depart.dateHeure.substring(5,7 ))<=12
     && parseInt(this.depart.dateHeure.substring(8,10 ))>=this.chaine.getDate()
+     && parseInt(this.depart.dateHeure.substring(8,10 ))>0
     && parseInt(this.depart.dateHeure.substring(8,10 ))<= 31
     && this.depart.dateHeure.length ==16
     && parseInt(this.depart.dateHeure.substring(11,13 ))<= 23
@@ -97,6 +98,8 @@ dateVerif(dateHeure :string){
   }
       
   }
+
+
   showAlertMessage( title:string, message:string, icon:any){
     return Swal.fire({
   

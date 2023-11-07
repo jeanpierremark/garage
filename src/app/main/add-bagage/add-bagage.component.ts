@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PassagerService } from 'src/app/service/passager.service';
@@ -15,7 +15,7 @@ id :any;
 today :any;
 dateT:any;
 passager :any =[];
-  constructor(private route: ActivatedRoute, private router: Router, private passagerService :PassagerService,private datePipe :DatePipe){}
+  constructor(private route: ActivatedRoute, private router: Router, private passagerService :PassagerService , private location:Location){}
 
   ngOnInit() : any {
     this.route.queryParamMap.subscribe(params => {
@@ -49,7 +49,7 @@ passager :any =[];
       next:(data)=>{
         if(data.body.message =="success"){
           this.showAlertMessage("Success","Bagage added successfully","success")
-          this.router.navigate(["/home/passager"]);
+         this.location.back();
         }else{
           console.log(data.body.message)
           this.showAlertMessage("Error","Error when saving informations ","warning")
@@ -81,13 +81,6 @@ passager :any =[];
       // showCancelButton: showCancelButton,
   
     }).then((result)=>{
-        if(result.isConfirmed){
-          if(icon == "success"){
-            window.location.reload()
-            this.router.navigate(["/home/passager/addBagage"])
-          }
-  
-        }
     })
   }
 

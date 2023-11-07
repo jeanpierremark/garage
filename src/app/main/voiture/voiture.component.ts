@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { VoitureService } from 'src/app/service/voiture.service';
@@ -14,7 +15,7 @@ export class VoitureComponent {
   voitures : any = [];
   dtOptions :DataTables.Settings = {}
   dtTrigger :Subject<any> = new Subject<any>();
-  constructor(private router: Router,private route : ActivatedRoute, private voitureService : VoitureService){}
+  constructor(private router: Router,private route : ActivatedRoute, private voitureService : VoitureService,private location:Location){}
   
   ngOnInit(){
     this.dtOptions = {
@@ -25,6 +26,9 @@ export class VoitureComponent {
     this.route.queryParamMap.subscribe(params => {
       this.id = params.get('id');})
     this.getAllVoiture()
+}
+retour(){
+  this.location.back();
 }
 
     getAllVoiture(){
@@ -42,6 +46,7 @@ export class VoitureComponent {
         console.log(err);}
     })
   }
+  
 
 
   deleteVoiture(id :any){

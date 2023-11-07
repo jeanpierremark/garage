@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { DepartService } from 'src/app/service/depart.service';
@@ -13,7 +14,7 @@ export class DepartComponent {
   departs : any = [];
    dtOptions :DataTables.Settings = {}
    dtTrigger :Subject<any> = new Subject<any>();
-  constructor(private router: Router, private departService : DepartService){}
+  constructor(private router: Router, private departService : DepartService,private location :Location){}
 
   ngOnInit(): void {
     this.getAllDepart();
@@ -24,6 +25,9 @@ export class DepartComponent {
     };
     
   
+}
+retour(){
+  this.location.back();
 }
 
     getAllDepart(){

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { PassagerService } from 'src/app/service/passager.service';
@@ -15,7 +16,7 @@ export class PassagerComponent {
   dtOptions :DataTables.Settings = {}
   dtTrigger :Subject<any> = new Subject<any>();
    
-  constructor(private router: Router, private passagerService : PassagerService){}
+  constructor(private router: Router, private passagerService : PassagerService,private location :Location){}
  
   ngOnInit(){
     this.dtOptions = {
@@ -41,6 +42,9 @@ export class PassagerComponent {
       },error:(err) => {
         console.log(err);}
     })
+  }
+  retour(){
+    this.location.back();
   }
 
   deletePassager(id :any){

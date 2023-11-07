@@ -42,9 +42,9 @@
                                         
                                         <td>
                                            
-                                            <a [routerLink]="['/home/editChauffeur']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 12px;" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
-                                            <a [routerLink]="['/home/chauffeur/allVoitures']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 12px;" class="btn btn-warning"><span class="ri-bus-2-fill"></span></a>&nbsp;&nbsp;
-                                            <a [routerLink]="['/home/chauffeur/newVoiture']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 12px;" class="btn btn-success"><span class="ri-bus-fill"><i class="ri-add-fill"></i></span></a>&nbsp;&nbsp;
+                                            <a [routerLink]="['/home/editChauffeur']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 12px;" class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;
+                                            <a [routerLink]="['/home/chauffeur/allVoitures']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 10px;" class="btn btn-warning"><span class="ri-bus-2-fill"></span></a>&nbsp;
+                                            <a [routerLink]="['/home/chauffeur/newVoiture']"   [queryParams]="{ id: chauffeur.id }" style="margin-bottom: 12px;" class="btn btn-success"><span class="ri-bus-fill"><i class="ri-add-fill"></i></span></a>
                                             <button  class="btn btn-danger " (click)="deleteChauffeur(chauffeur.id)" ><span style="margin-bottom: 12px;" class="bi bi-trash-fill"></span></button>
                                             
                                            
@@ -58,7 +58,7 @@
                 </div>
             </div>
       
-    
+    <button class="btn btn-danger" (click)="retour()">Retour</button>
     
     <main>
        

@@ -60,6 +60,7 @@ ngOnInit(){
     this.passagerService.updatePerte(id).subscribe(
       {
         next : (response) =>{
+          console.log(response)
           if(response.message == "success"){
             this.showAlertMessage("Success","Perte Traitée","success")
             window.location.reload()

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { ChauffeurService } from 'src/app/service/chauffeur.service';
@@ -16,7 +17,7 @@ export class ChauffeurComponent {
   dtOptions :DataTables.Settings = {}
   dtTrigger :Subject<any> = new Subject<any>();
 
-constructor(private router : Router,private route :ActivatedRoute,private chauffeurService:ChauffeurService){}
+constructor(private router : Router,private route :ActivatedRoute,private chauffeurService:ChauffeurService,private location :Location){}
 
 
 ngOnInit(){
@@ -31,7 +32,9 @@ ngOnInit(){
     this.getAllChauffeur();
 }
 
-
+retour(){
+  this.location.back();
+}
 
     getAllChauffeur(){
     this.chauffeurService.getAllChauffeur().
