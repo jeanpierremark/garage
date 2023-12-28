@@ -104,7 +104,7 @@ ngOnInit(){
   }
 }
       else{
-        this.showAlertMessage("Warning","This departure is not for today already passed","warning")
+        this.showAlertMessage("Warning","This departure is not for today ","warning")
       }
     }
 
