@@ -45,6 +45,7 @@ updateVoiture(){
     this.id,
     this.voiture.type,
     this.voiture.matricule,
+    this.voiture.place,
    )
     .subscribe({
       next:(data) => {
@@ -60,7 +61,7 @@ updateVoiture(){
       },
       error:(err) => {
         console.log(err);
-        this.showAlertMessage("Error","Erreur au niveau du serveur","warning")
+        this.showAlertMessage("Error","Internal server error ","warning")
 
       }
     })

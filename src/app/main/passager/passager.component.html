@@ -37,9 +37,8 @@
                                         
                                         <td>
                                            
-                                            <a  [routerLink]="['/home/editPassager']"   [queryParams]="{ id:passager.id}"    class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;&nbsp;
-                                            <a   [routerLink]="['/home/passager/bagage']"   [queryParams]="{ id:passager.id}"   class="btn btn-warning"><span class="bi bi-bag-fill"></span></a>&nbsp;&nbsp;
-                                            
+                                            <a  [routerLink]="['/home/editPassager']"   [queryParams]="{ id:passager.id}"    class="btn btn-primary"><span class="bi bi-pencil-square"></span></a>&nbsp;
+                                            <a   [routerLink]="['/home/passager/bagage']"   [queryParams]="{ id:passager.id}"   class="btn btn-warning"><span class="bi bi-bag-fill"></span></a>&nbsp;
                                             <button  (click)="deletePassager(passager.id)" class="btn btn-danger " ><span class="bi bi-trash-fill"></span></button>
                                             
                                            

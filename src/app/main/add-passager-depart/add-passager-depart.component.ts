@@ -82,20 +82,23 @@ ngOnInit(){
       this.passager.carteId
       ).subscribe({
         next:(data)=>{
-          if(data.message =="success"){
+          if(data.body.message=="success"){
            
             this.showAlertMessage("Success","Informations saved succesfully ","success")
             this.router.navigate(["/home/depart"])
           }
+         
         },error : (error: HttpErrorResponse) => {
           if(error.error.message == "not found"){
-            this.showAlertMessage("Error"," This ID Card does not exist ","warning")
+            this.showAlertMessage("Error"," This ID Card does notttt exist ","warning")
           
+        }
+        else if(error.error.message == "out of bound"){
+          this.showAlertMessage("Error","There are no more available places","warning")
         }
         else if(error.error.message == "Error"){
           this.showAlertMessage("Error","Internal Server Error","warning")
         }
-      
     }
   })
   }

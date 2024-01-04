@@ -40,7 +40,8 @@ export class AddVoitureComponent {
    this.voitureService.addVoiture(
     this.id,
     this.voiture.type,
-    this.voiture.matricule
+    this.voiture.matricule,
+    this.voiture.place
     ).subscribe({
       next:(data)=>{
         if(data.body.message =="success"){

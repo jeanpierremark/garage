@@ -20,6 +20,7 @@
                           <tr>
                             <th scope="col">Matricule</th>
                             <th scope="col">Type</th>
+                            <th scope="col">Places </th>
                             <th scope="col">Chauffeur</th>
                             <th scope="col">Téléphone</th>
                             <th scope="col">Action</th>
@@ -30,6 +31,7 @@
                                 <tr *ngFor="let voiture of voitures">
                                     <td>{{voiture.matricule}}</td>
                                     <td>{{voiture.type}}</td>
+                                    <td>{{voiture.place}}</td>
                                     <td>{{voiture.prenom}} {{voiture.nom}}</td>
                                     <td>{{voiture.telephone}} </td>
                                     

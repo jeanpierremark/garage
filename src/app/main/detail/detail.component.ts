@@ -31,6 +31,7 @@ ngOnInit(){
     .subscribe({
       next: (response)=>{
         if(response.body.message =='success'){
+          console.log(response.body.perteData);
           this.pertes = response.body.perteData;
           
         
@@ -50,26 +51,48 @@ ngOnInit(){
             this.dtTrigger.next(null);
           }
           console.log(this.departs);
-          //this.router.navigate(["voiture"]);
+          //this.router.navigate(["voiture"]); 
       },error:(err) => {
         console.log(err);}
     })
   }
 
-  updatePerte(id:any){
-    this.passagerService.updatePerte(id).subscribe(
+  updatePerte(perteId:any,userId:any){
+    
+    this.passagerService.sendEmail(userId).subscribe(
       {
         next : (response) =>{
           console.log(response)
           if(response.message == "success"){
-            this.showAlertMessage("Success","Perte Traitée","success")
-            window.location.reload()
+            console.log(response.message);
+            this.passagerService.updatePerte(perteId).subscribe({
+              next : (data) =>{
+                    if(data.message == "success"){
+                      this.showAlertMessage("Success","Perte Traitée","success")
+                      window.location.reload()
+                    }
+              },error : (error: HttpErrorResponse) => {
+                if(error.error.message == "error"){
+                  console.log(error.error.message)
+                  this.showAlertMessage("Error","Error when updating","error")
+                  }
+                }
+              }
+            )
+          
           }
         },error : (error: HttpErrorResponse) => {
           if(error.error.message == "error"){
-          this.showAlertMessage("Error"," Internal server error","error")
-         
-          }
+            console.log(error.error.message)
+            this.showAlertMessage("Error","Error when sendding email","error")
+            }
+           else if(error.error.message == "not found"){
+              console.log(error.error.message);
+              this.showAlertMessage("Error"," This email does not exist","error")
+              }
+           else{
+                this.showAlertMessage("Error","Internal server error","error")
+                }
       }
     }
     )

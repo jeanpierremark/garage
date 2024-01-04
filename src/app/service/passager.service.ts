@@ -58,5 +58,9 @@ export class PassagerService {
     deletePassager(id : any){
       return this.http.delete<any>('http://localhost:3000/api/passager/deletePassager/'+id,{observe:"response",headers: this.httpOptions.headers});
     }
+
+    sendEmail(id:number) {
+      return this.http.post<any>('http://localhost:3000/api/passager/sendEmail/'+id,{observe:"response",headers: this.httpOptions.headers});
+    }
     
 }
